@@ -1,18 +1,26 @@
 # prettier-plugin-oxc
 
-Prettier plugin for `.(j|t)sx?` files using `oxc-parser` with `experimentalRawTransfer` option.
+Prettier plugin for JS(X) and TS(X) files using `oxc-parser` with `experimentalRawTransfer` option. 🚀
 
 ```sh
+# For JS(X)
 prettier --plugin=prettier-plugin-oxc --parser=oxc
+# For TS(X)
 prettier --plugin=prettier-plugin-oxc --parser=oxc-ts
 ```
 
-NOTE: For TS(X), the OXC TypeScript AST structure in JavaScript land is not yet stabilized.
+> [!WARNING]
+> Current limitations:
+> - Cannot format JSX currently
+>   - Prettier expects `JSXText` nodes to have a `raw` property, but OXC does not provide this
+> - Fails in some cases:
+>   - When Prettier requires `loc: { [start|end]: { line, column }}` in its logic, which OXC does not offer
+>   - TypeScript may not work since OXC's TypeScript AST structure for JavaScript is not yet stabilized
 
 ## TODO
 
-- Investigate errors in JSX fixtures and 4KB fixture
 - Postprocess AST
+  - Remove useless extra parens, rebalance logical exprs
 
 ## Debug
 
