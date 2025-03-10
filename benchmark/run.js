@@ -12,11 +12,12 @@ for (const file of FIXTURES) {
   bench("$parser", function* (state) {
     const parser = state.get("parser");
 
-    yield async () =>
-      await prettier.format(CODE, {
-        parser,
-        plugins: ["./src/index.js"],
-      });
+    const options = {
+      parser,
+      plugins: parser === "oxc" ? ["./src/index.js"] : [],
+    };
+
+    yield async () => await prettier.format(CODE, options);
   }).args("parser", ["oxc", "babel"]);
 
   await run({ format: "markdown" });
