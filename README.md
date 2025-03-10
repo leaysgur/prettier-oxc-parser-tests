@@ -20,7 +20,7 @@ prettier --plugin=prettier-plugin-oxc --parser=oxc-ts
 ## TODO
 
 - Postprocess AST
-  - Remove useless extra parens, rebalance logical exprs
+  - Remove useless extra parens, rebalance logical exprs to align Babel outputs
 
 ## Debug
 
