@@ -1,6 +1,7 @@
 {
   "name": "prettier-plugin-oxc",
   "version": "0.0.0",
+  "type": "module",
   "exports": {
     ".": {
       "default": "./src/index.js"
@@ -11,6 +12,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "mitata": "^1.0.34",
     "prettier": "^3.5.3"
   },
   "dependencies": {

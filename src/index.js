@@ -1,22 +1,20 @@
 import { parseSync } from "oxc-parser";
 
 export const languages = [
-  // TODO: I'm not yet sure but if tsx is superset of jsx in all cases, these can be merged into one.
-  // But at least for now, TS AST is not stabliized yet, so I'm keeping them separated.
   {
-    name: "oxc-js",
-    parsers: ["oxc-js"],
+    name: "oxc",
+    parsers: ["oxc"],
     extensions: [".js", ".jsx", ".mjs", ".cjs"],
   },
   {
     name: "oxc-ts",
     parsers: ["oxc-ts"],
-    extensions: [".ts", ".tsx"],
+    extensions: [".ts", ".tsx", ".mts", ".cts"],
   },
 ];
 
 export const parsers = {
-  ["oxc-js"]: createParser("dummy.jsx"),
+  ["oxc"]: createParser("dummy.jsx"),
   ["oxc-ts"]: createParser("dummy.tsx"),
 };
 
