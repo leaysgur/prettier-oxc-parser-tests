@@ -12,7 +12,7 @@ const formatted = await prettier.format(CODE, {
   // parser: "babel-ts",
   // parser: "oxc-ts",
   // parser: "babel",
-  parser: "oxc-js",
+  parser: "oxc",
   plugins: ["./src/index.js"],
 });
 
