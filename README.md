@@ -11,11 +11,10 @@ prettier --plugin=prettier-plugin-oxc --parser=oxc-ts
 
 > [!WARNING]
 > Current limitations:
-> - Cannot format JSX currently
->   - Prettier expects `JSXText` node to have a `raw` property, but OXC does not provide this yet
-> - Fails in some cases:
->   - When Prettier requires `loc: { [start|end]: { line, column }}` in its logic, which OXC does not offer now
->   - TypeScript may not work since OXC's TypeScript AST structure for JavaScript is not yet stabilized
+> - Cannot format JSX
+>   - Prettier expects `JSXText` node to have a `raw` property, but OXC does not provide this [yet](https://github.com/oxc-project/oxc/issues/9667)
+> - Fails sometimes when Prettier requires `loc: { [start|end]: { line, column }}` in its logic, which OXC ESTree does not have
+> - May not work for TS(X) since OXC's TypeScript AST structure for JavaScript land(aims TS-ESTree) is not yet stabilized
 
 ## TODO
 
