@@ -16,6 +16,6 @@
     "prettier": "^3.5.3"
   },
   "dependencies": {
-    "oxc-parser": "^0.56.5"
+    "oxc-parser": "^0.58.1"
   }
 }
