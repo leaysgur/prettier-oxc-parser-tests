@@ -17,8 +17,10 @@ prettier --plugin=prettier-plugin-oxc --parser=oxc-ts
 
 ## TODO
 
+- Add `Locations`
 - Postprocess AST
-  - Remove useless extra parens, rebalance logical exprs to align Babel outputs
+  - Remove useless extra parens, rebalance logical exprs, etc... to align Babel outputs
+- Verify output
 
 ## Debug
 
@@ -32,6 +34,9 @@ node debug.js
 ```sh
 node --expose-gc benchmark/run.js
 ```
+
+> [!WARNING]
+> This benchmark does not ensure formatted output.
 
 ### JS(X) Benchmarks
 #### 0000-kb.js
