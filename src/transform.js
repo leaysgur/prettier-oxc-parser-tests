@@ -12,9 +12,9 @@ export function addCommentLocation(comments, sourceText) {
 
   // Precompute line start positions
   const lineStarts = [0];
-  for (let i = 0; i < sourceText.length; i++) {
-    if (sourceText[i] === "\n") {
-      lineStarts.push(i + 1);
+  for (let idx = 0; idx < sourceText.length; idx++) {
+    if (sourceText[idx] === "\n") {
+      lineStarts.push(idx + 1);
     }
   }
 
@@ -35,12 +35,21 @@ export function addCommentLocation(comments, sourceText) {
  * @returns {{ line: number, column: number }}
  */
 function getLineAndColumn(offset, lineStarts) {
-  let line = 0;
-  for (let i = 1; i < lineStarts.length; i++) {
-    if (lineStarts[i] > offset) break;
-    line = i;
+  // Binary search for performance
+  let low = 0;
+  let high = lineStarts.length - 1;
+  while (low < high) {
+    const mid = Math.floor((low + high + 1) / 2);
+
+    if (lineStarts[mid] <= offset) {
+      low = mid;
+    } else {
+      high = mid - 1;
+    }
   }
 
+  const line = low;
   const column = offset - lineStarts[line];
+
   return { line: line + 1, column };
 }
