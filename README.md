@@ -12,7 +12,8 @@ prettier --plugin=prettier-plugin-oxc --parser=oxc-ts
 > [!WARNING]
 > Current limitations:
 > - Fails sometimes when Prettier requires `loc: { [start|end]: { line, column }}` in its logic, which OXC ESTree does not have
-> - May not work for TS(X) since OXC's TypeScript AST structure for JavaScript land(aims TS-ESTree) is not yet stabilized
+> - May not work for TypeScript since OXC's TypeScript AST structure for JavaScript land(aims to align TS-ESLint) is not yet stabilized
+>   - See https://github.com/oxc-project/oxc/issues/9705
 
 ## TODO
 
