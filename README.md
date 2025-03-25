@@ -10,6 +10,7 @@ prettier --plugin=prettier-plugin-oxc --parser=oxc-ts
 ```
 
 > [!WARNING]
+> - Formatted output is not verified yet
 > - May not work for TypeScript since OXC's TypeScript AST structure for JavaScript land(aims to align TS-ESLint) is not yet stabilized
 >   - See https://github.com/oxc-project/oxc/issues/9705
 
