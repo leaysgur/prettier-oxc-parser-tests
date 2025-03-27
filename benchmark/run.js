@@ -4,7 +4,9 @@ import * as prettier from "prettier";
 
 const FIXTURES = await readdir("./benchmark/fixtures");
 
-console.log("### JS(X) Benchmarks");
+console.log("Prettier version:", prettier.version);
+
+console.log("### JS(X)");
 for (const file of FIXTURES) {
   console.log("#### %s", file);
   const CODE = await readFile(`./benchmark/fixtures/${file}`, "utf8");
