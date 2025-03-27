@@ -47,6 +47,7 @@ function createParser(fileName) {
       // NOTE: Add `loc` property to comments only.
       // Basically, `loc(Start|End)` is used to get the location of the node.
       // But for comments, `loc.start` seems to be used.
+      // NOTE: Prettier `main` branch refactored this part, so we can remove this once it get merged
       // @ts-expect-error: `comments` does not exist on `Program`
       ast.comments = addCommentLocation(parsed.comments, code);
 

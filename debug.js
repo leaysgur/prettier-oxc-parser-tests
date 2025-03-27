@@ -2,7 +2,7 @@ import * as prettier from "prettier";
 
 // DEBUG: Read from file
 // import { readFileSync} from "node:fs";
-// const CODE = readFileSync("./benchmark/fixtures/4000-kb.js", "utf-8");
+// const CODE = readFileSync("./benchmark/fixtures/3930-kb.js", "utf-8");
 const CODE = `
 let a,b=1,c=[2,3,,4,]
 `;
@@ -23,9 +23,9 @@ const formatted = await prettier.format(CODE, {
   // parser: "babel-ts",
   // parser: "oxc-ts",
   // parser: "babel",
-  parser: "acorn",
+  parser: "oxc",
   plugins: ["./src/index.js"],
 });
 
-console.log("✨ Formatted:");
+console.log(`✨ Prettier@${prettier.version}:`);
 console.log(formatted);

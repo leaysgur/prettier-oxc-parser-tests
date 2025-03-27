@@ -16,7 +16,7 @@ for (const file of FIXTURES) {
 
     const options = {
       parser,
-      plugins: parser === "oxc" ? ["./src/index.js"] : [],
+      plugins: parser.startsWith("oxc") ? ["./src/index.js"] : [],
     };
 
     yield async () => await prettier.format(CODE, options);
