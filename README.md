@@ -16,9 +16,12 @@ prettier --plugin=prettier-plugin-oxc --parser=oxc-ts
 
 ## TODO
 
-- Postprocess AST
-  - Remove useless extra parens, rebalance logical exprs, etc... to align Babel outputs
 - Verify output
+  - Clone Prettier repo for test files
+  - Use Prettier@main to track latest changes(`loc.end` refactor, etc)
+- Postprocess AST
+  - JS: Remove useless extra parens
+  - JS/TS: rebalance logical exprs, etc... to align Babel outputs
 
 ## Debug
 
