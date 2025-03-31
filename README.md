@@ -1,5 +1,11 @@
 # prettier-plugin-oxc
 
+> [!WARNING]
+> - This is experimental plugin using experimental feature!
+> - Formatted output is not verified yet
+> - May not work for TypeScript, since OXC's TS AST for JavaScript land is not yet stabilized(aims to align TS-ESLint)
+>   - See https://github.com/oxc-project/oxc/issues/9705
+
 Prettier plugin for JS(X) and TS(X) files using `oxc-parser` with `experimentalRawTransfer` option. 🚀
 
 ```sh
@@ -9,19 +15,19 @@ prettier --plugin=prettier-plugin-oxc --parser=oxc
 prettier --plugin=prettier-plugin-oxc --parser=oxc-ts
 ```
 
-> [!WARNING]
-> - Formatted output is not verified yet
-> - May not work for TypeScript since OXC's TypeScript AST structure for JavaScript land(aims to align TS-ESLint) is not yet stabilized
->   - See https://github.com/oxc-project/oxc/issues/9705
-
 ## TODO
 
 - Verify output
   - Clone Prettier repo for test files
   - Use Prettier@main to track latest changes(`loc.end` refactor, etc)
+  - Dump `Doc` using `babel` for JS and `typescript` for TS
+  - Dump `Doc` using `oxc` for JS and `oxc-ts` for TS
+  - Save diff as snapshots
+- Remove `addCommentLocation` transform
+  - This can be removed if using Prettier@main for debug and benchmark
 - Postprocess AST
   - JS: Remove useless extra parens
-  - JS/TS: rebalance logical exprs, etc... to align Babel outputs
+  - JS/TS: rebalance logical exprs, etc...
 
 ## Debug
 
