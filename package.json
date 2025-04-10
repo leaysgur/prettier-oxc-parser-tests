@@ -13,9 +13,9 @@
   "license": "MIT",
   "devDependencies": {
     "mitata": "^1.0.34",
-    "prettier": "^3.5.3"
+    "prettier": "3.5.3"
   },
   "dependencies": {
-    "oxc-parser": "^0.61.2"
+    "oxc-parser": "0.63.0"
   }
 }

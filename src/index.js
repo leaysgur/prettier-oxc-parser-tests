@@ -16,8 +16,8 @@ export const languages = [
 ];
 
 export const parsers = {
-  ["oxc"]: createParser(false),
-  ["oxc-ts"]: createParser(true),
+  ["oxc"]: createParser(true),
+  ["oxc-ts"]: createParser(false),
 };
 
 /** @param {boolean} isJS */
@@ -64,6 +64,7 @@ function createParser(isJS) {
       // we need to remove the extra parens manually like Prettier does for `babel` parser.
       // And also, other things may be needed.
       // https://github.com/prettier/prettier/blob/1a48db46edb1413ee5414da11ba33a9d795b66cd/src/language-js/parse/postprocess/index.js
+      // For TS, postprocess is also needed, except for parens.
       // TODO: ast = postprocess(ast)
       return ast;
     },

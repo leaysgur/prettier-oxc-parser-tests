@@ -1,10 +1,13 @@
 import { readFile, readdir } from "node:fs/promises";
 import { bench, run } from "mitata";
 import * as prettier from "prettier";
+import pkg from "../package.json" with { type: "json" };
 
 const FIXTURES = await readdir("./benchmark/fixtures");
 
-console.log("Prettier version:", prettier.version);
+console.log("- OXC version:", "`" + pkg.dependencies["oxc-parser"] + "`");
+console.log("- Prettier version:", "`" + pkg.devDependencies.prettier + "`");
+console.log("");
 
 console.log("### JS(X)");
 for (const file of FIXTURES) {
