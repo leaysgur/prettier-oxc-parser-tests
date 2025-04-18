@@ -1,0 +1,10 @@
+===================================================================
+--- theirs.ts
++++ ours.ts
+@@ -1,5 +1,5 @@
+ class D extends B {
+-  constructor(override foo: string) {
++  constructor(foo: string) {
+     super();
+   }
+ }

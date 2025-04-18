@@ -1,0 +1,36 @@
+===================================================================
+--- theirs.jsx
++++ ours.jsx
+@@ -6,9 +6,9 @@
+   </div>
+ );
+ 
+ const NonBreakingArrowExpressionWBody = () => {
+-  return <div />;
++  return (<div />);
+ };
+ 
+ const BreakingArrowExpressionWBody = () => {
+   return (
+@@ -18,9 +18,9 @@
+   );
+ };
+ 
+ const NonBreakingFunction = function () {
+-  return <div />;
++  return (<div />);
+ };
+ 
+ const BreakingFunction = function () {
+   return (
+@@ -31,9 +31,9 @@
+ };
+ 
+ class NonBreakingClass extends React.component {
+   render() {
+-    return <div />;
++    return (<div />);
+   }
+ }
+ 
+ class BreakingClass extends React.component {

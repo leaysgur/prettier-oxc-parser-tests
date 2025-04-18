@@ -1,0 +1,31 @@
+===================================================================
+--- theirs.js
++++ ours.js
+@@ -21,17 +21,20 @@
+   }
+ `;
+ */
+ 
+-const AspectRatioBox = ({ aspectRatio, children, ...props }) => (
+-  <div
+-    className={`height: 0;
++const AspectRatioBox = ({ aspectRatio, children, ...props }) =>
++  (
++    (
++      <div
++        className={`height: 0;
+   overflow: hidden;
+   padding-top: ${(props) => 100 / props.aspectRatio}%;
+   background: white;
+   position: relative;`}
+-  >
+-    <div>{children}</div>
+-  </div>
+-);
++      >
++        <div>{children}</div>
++      </div>
++    )
++  );
+ 
+ export default AspectRatioBox;

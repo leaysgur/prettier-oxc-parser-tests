@@ -1,0 +1,10 @@
+===================================================================
+--- theirs.ts
++++ ours.ts
+@@ -1,5 +1,5 @@
+ class A {
+-  constructor(public arg: number = 10) {
++  constructor(arg: number = 10) {
+     // fails because of comment
+   }
+ }

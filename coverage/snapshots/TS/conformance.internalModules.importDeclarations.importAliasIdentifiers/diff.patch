@@ -1,0 +1,15 @@
+===================================================================
+--- theirs.ts
++++ ours.ts
+@@ -1,10 +1,7 @@
+ module moduleA {
+   export class Point {
+-    constructor(
+-      public x: number,
+-      public y: number,
+-    ) {}
++    constructor(x: number, y: number) {}
+   }
+ }
+ 
+ import alias = moduleA;

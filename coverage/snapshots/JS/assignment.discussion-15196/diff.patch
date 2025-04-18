@@ -1,0 +1,22 @@
+===================================================================
+--- theirs.js
++++ ours.js
+@@ -34,12 +34,14 @@
+   const loooooooooooooooooooooooooong2 =
+     yield looooooooooooooong.looooooooooooooong.loooooong();
+   const loooooooooooooooooooooooooong3 =
+     yield looooooooooooooooooooooooooooooooooooooooooooog();
+-  const loooooooooooooooooooooooooong4 =
+-    !(yield looooooooooooooong.looooooooooooooong.loooooong);
+-  const loooooooooooooooooooooooooong5 =
+-    void !!(yield looooooooooooooong.looooooooooooooong.loooooong);
++  const loooooooooooooooooooooooooong4 = !(
++    yield looooooooooooooong.looooooooooooooong.loooooong
++  );
++  const loooooooooooooooooooooooooong5 = void !!(
++    yield looooooooooooooong.looooooooooooooong.loooooong
++  );
+   const loooooooooooooooooooooooooong6 =
+     yield* looooooooooooooong.looooooooooooooong.loooooong;
+ 
+   const longlonglonglonglonglonglong1 = yield qwertyuiop(

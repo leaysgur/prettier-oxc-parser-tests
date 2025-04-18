@@ -1,0 +1,116 @@
+===================================================================
+--- theirs.js
++++ ours.js
+@@ -1,28 +1,32 @@
+-const f = (argument1, argument2, argument3) => (
+-  doSomethingWithArgument(argument1),
+-  doSomethingWithArgument(argument2),
+-  argument1
+-);
+-(function () {
+-  return (
+-    aLongIdentifierName,
+-    aLongIdentifierName,
+-    aLongIdentifierName,
+-    aLongIdentifierName
++const f = (argument1, argument2, argument3) =>
++  (
++    doSomethingWithArgument(argument1),
++    doSomethingWithArgument(argument2),
++    argument1
+   );
+-});
++(
++  function () {
++    return (
++      aLongIdentifierName,
++      aLongIdentifierName,
++      aLongIdentifierName,
++      aLongIdentifierName
++    );
++  }
++);
+ aLongIdentifierName,
+   aLongIdentifierName,
+   aLongIdentifierName,
+   aLongIdentifierName;
+ a.then(
+-  () => (
+-    aLongIdentifierName,
+-    aLongIdentifierName,
+-    aLongIdentifierName,
+-    aLongIdentifierName
+-  ),
++  () =>
++    (
++      aLongIdentifierName,
++      aLongIdentifierName,
++      aLongIdentifierName,
++      aLongIdentifierName
++    ),
+ );
+ for (
+   aLongIdentifierName = 0,
+     aLongIdentifierName = 0,
+@@ -30,29 +34,39 @@
+     aLongIdentifierName = 0;
+   test;
+   update
+ ) {}
+-(a = b
+-  ? c
+-  : function () {
+-      return 0;
+-    }),
+-  (a = b
++(
++  a = b
+     ? c
+     : function () {
+         return 0;
+-      }),
+-  (a = b
+-    ? c
+-    : function () {
+-        return 0;
+-      }),
+-  (a = b
+-    ? c
+-    : function () {
+-        return 0;
+-      }),
+-  (a = b
+-    ? c
+-    : function () {
+-        return 0;
+-      });
++      }
++),
++  (
++    a = b
++      ? c
++      : function () {
++          return 0;
++        }
++  ),
++  (
++    a = b
++      ? c
++      : function () {
++          return 0;
++        }
++  ),
++  (
++    a = b
++      ? c
++      : function () {
++          return 0;
++        }
++  ),
++  (
++    a = b
++      ? c
++      : function () {
++          return 0;
++        }
++  );

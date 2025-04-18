@@ -1,0 +1,12 @@
+===================================================================
+--- theirs.js
++++ ours.js
+@@ -1,5 +1,5 @@
+ function* f() {
+-  yield (a) => a;
+-  yield async (a) => a;
+-  yield async (a) => a;
++  (yield (a) => a);
++  (yield async (a) => a);
++  (yield async (a) => a);
+ }

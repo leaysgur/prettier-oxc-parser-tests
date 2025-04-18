@@ -1,0 +1,16 @@
+===================================================================
+--- theirs.js
++++ ours.js
+@@ -44,10 +44,10 @@
+   .then((t) => t);
+ 
+ (
+   veryLongVeryLongVeryLong ||
+-  anotherVeryLongVeryLongVeryLong ||
+-  veryVeryVeryLongError
++    anotherVeryLongVeryLongVeryLong ||
++    veryVeryVeryLongError
+ )
+ 
+   .map((tickets) => TicketRecord.createFromSomeLongString())
+ 

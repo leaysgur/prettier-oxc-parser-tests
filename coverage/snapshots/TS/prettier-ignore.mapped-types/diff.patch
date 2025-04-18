@@ -1,0 +1,55 @@
+===================================================================
+--- theirs.ts
++++ ours.ts
+@@ -10,14 +10,14 @@
+     ]: C  |  D
+   };
+ 
+ type a = {
+-  [A in // prettier-ignore
+-  B]: C | D;
++  readonly [A in // prettier-ignore
++  B]?: C | D;
+ };
+ 
+ type a = {
+-  [A in B]: // prettier-ignore
++  readonly [A in B]?: // prettier-ignore
+   C | D;
+ };
+ 
+ type a = {
+@@ -27,14 +27,14 @@
+     ]: C  |  D
+   };
+ 
+ type a = {
+-  [A in /* prettier-ignore */
+-  B]: C | D;
++  readonly [A in /* prettier-ignore */
++  B]?: C | D;
+ };
+ 
+ type a = {
+-  [A in B]: /* prettier-ignore */
++  readonly [A in B]?: /* prettier-ignore */
+   C | D;
+ };
+ 
+ type a = {
+@@ -45,13 +45,13 @@
+     [/* prettier-ignore */ A in B ]: C  |  D
+   };
+ 
+ type a = {
+-  [A in /* prettier-ignore */ B]: C | D;
++  readonly [A in /* prettier-ignore */ B]?: C | D;
+ };
+ 
+ type a = {
+-  [A in B /* prettier-ignore */]: C | D;
++  readonly [A in B /* prettier-ignore */]?: C | D;
+ };
+ 
+ type a = {
+     /* prettier-ignore */

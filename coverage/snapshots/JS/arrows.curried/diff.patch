@@ -1,0 +1,136 @@
+===================================================================
+--- theirs.js
++++ ours.js
+@@ -9,23 +9,14 @@
+ const fn8 = (a) => ({ foo: bar, bar: baz, baz: foo });
+ const fn9 = (a) => (b) => ({ foo: bar, bar: baz, baz: foo });
+ const fn10 = (a) => (b) => (c) => ({ foo: bar, bar: baz, baz: foo });
+ const fn11 = (a) => (b) => (c) => (d) => ({ foo: bar, bar: baz, baz: foo });
+-const fn12 = (a) => (b) => (c) => (d) => (e) => ({
+-  foo: bar,
+-  bar: baz,
+-  baz: foo,
+-});
+-const fn13 = (a) => (b) => (c) => (d) => (e) => (g) => ({
+-  foo: bar,
+-  bar: baz,
+-  baz: foo,
+-});
+-const fn14 = (a) => (b) => (c) => (d) => (e) => (g) => (f) => ({
+-  foo: bar,
+-  bar: baz,
+-  baz: foo,
+-});
++const fn12 = (a) => (b) => (c) => (d) => (e) =>
++  ({ foo: bar, bar: baz, baz: foo });
++const fn13 = (a) => (b) => (c) => (d) => (e) => (g) =>
++  ({ foo: bar, bar: baz, baz: foo });
++const fn14 = (a) => (b) => (c) => (d) => (e) => (g) => (f) =>
++  ({ foo: bar, bar: baz, baz: foo });
+ 
+ const curryTest =
+   (argument1) =>
+   (argument2) =>
+@@ -37,12 +28,13 @@
+   (argument8) =>
+   (argument9) =>
+   (argument10) =>
+   (argument11) =>
+-  (argument12) => ({
+-    foo: argument1,
+-    bar: argument2,
+-  });
++  (argument12) =>
++    ({
++      foo: argument1,
++      bar: argument2,
++    });
+ 
+ let curryTest2 =
+   (argument1) =>
+   (argument2) =>
+@@ -120,13 +112,14 @@
+     (argument8) =>
+     (argument9) =>
+     (argument10) =>
+     (argument11) =>
+-    (argument12) => ({
+-      foo: bar,
+-      bar: baz,
+-      baz: foo,
+-    }),
++    (argument12) =>
++      ({
++        foo: bar,
++        bar: baz,
++        baz: foo,
++      }),
+ );
+ 
+ foo(
+   (argument1) =>
+@@ -147,20 +140,20 @@
+ );
+ 
+ (
+   (argument1) =>
+-  (argument2) =>
+-  (argument3) =>
+-  (argument4) =>
+-  (argument5) =>
+-  (argument6) =>
+-  (argument7) =>
+-  (argument8) =>
+-  (argument9) =>
+-  (argument10) =>
+-  (argument11) =>
+-  (argument12) =>
+-    3
++    (argument2) =>
++    (argument3) =>
++    (argument4) =>
++    (argument5) =>
++    (argument6) =>
++    (argument7) =>
++    (argument8) =>
++    (argument9) =>
++    (argument10) =>
++    (argument11) =>
++    (argument12) =>
++      3
+ )(3);
+ 
+ bar(
+   foo(
+@@ -174,22 +167,24 @@
+       (argument8) =>
+       (argument9) =>
+       (argument10) =>
+       (argument11) =>
+-      (argument12) => ({
+-        foo: bar,
+-        bar: baz,
+-      }),
++      (argument12) =>
++        ({
++          foo: bar,
++          bar: baz,
++        }),
+   ),
+ );
+ 
+ const baaaz =
+   (aaaaa1, bbbbb1) =>
+   (aaaaa2, bbbbb2) =>
+   (aaaaa3, bbbbb3) =>
+-  (aaaaa4, bbbbb4) => ({
+-    foo: bar,
+-  });
++  (aaaaa4, bbbbb4) =>
++    ({
++      foo: bar,
++    });
+ 
+ new Fooooooooooooooooooooooooooooooooooooooooooooooooooo(
+   (action) => (next) => (next) => (next) => (next) => (next) => (next) =>
+     dispatch(action),

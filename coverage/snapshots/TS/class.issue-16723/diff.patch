@@ -1,0 +1,13 @@
+===================================================================
+--- theirs.ts
++++ ours.ts
+@@ -1,8 +1,8 @@
+ export class JiraCreatePixFraudDetectionGateway
+   implements Pick<IssuePixFraudDetectionGateway, "createPixFraudDetectionIssue">
+ {
+-  constructor(private readonly logger: Logger) {
++  constructor(logger: Logger) {
+     this.logger = logger.child({
+       context: JiraCreatePixFraudDetectionGateway.name,
+     });
+   }

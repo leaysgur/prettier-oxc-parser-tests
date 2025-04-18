@@ -1,0 +1,12 @@
+===================================================================
+--- theirs.js
++++ ours.js
+@@ -1,4 +1,5 @@
+-(valid
+-  ? helper.responseBody(this.currentUser)
+-  : helper.responseBody(this.defaultUser)
++(
++  valid
++    ? helper.responseBody(this.currentUser)
++    : helper.responseBody(this.defaultUser)
+ ).prop;

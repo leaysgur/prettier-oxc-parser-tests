@@ -1,0 +1,33 @@
+===================================================================
+--- theirs.ts
++++ ours.ts
+@@ -1,17 +1,25 @@
+ // TypeScript has the same behavior, including a line break after =, but no parens around "conditional":
+ type KnownKeys<T> = {
+-  [K in keyof T]: string extends K ? never : number extends K ? never : K;
+-} extends { [_ in keyof T]: infer U }
++  readonly [K in keyof T]?: string extends K
++    ? never
++    : number extends K
++      ? never
++      : K;
++} extends { readonly [_ in keyof T]?: infer U }
+   ? {} extends U
+     ? never
+     : U
+   : never;
+ 
+ type KnownKeysWithLongExtends<T> = {
+-  [K in keyof T]: string extends K ? never : number extends K ? never : K;
++  readonly [K in keyof T]?: string extends K
++    ? never
++    : number extends K
++      ? never
++      : K;
+ } extends {
+-  [_ in keyof T]: SomeReallyLongThingThatBreaksTheLine<infer U>;
++  readonly [_ in keyof T]?: SomeReallyLongThingThatBreaksTheLine<infer U>;
+ }
+   ? U
+   : never;
+ 

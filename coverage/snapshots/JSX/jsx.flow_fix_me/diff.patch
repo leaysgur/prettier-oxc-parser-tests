@@ -1,0 +1,12 @@
+===================================================================
+--- theirs.jsx
++++ ours.jsx
+@@ -1,4 +1,6 @@
+ const aDiv = (
+-  /* $FlowFixMe */
+-  <div className="foo">Foo bar</div>
++  (
++    /* $FlowFixMe */
++    <div className="foo">Foo bar</div>
++  )
+ );

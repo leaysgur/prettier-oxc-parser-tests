@@ -1,0 +1,33 @@
+===================================================================
+--- theirs.js
++++ ours.js
+@@ -2,17 +2,21 @@
+   // this is a function
+   return 42;
+ }
+ 
+-(function named() {
+-  // this is a function
+-  return 42;
+-})();
++(
++  function named() {
++    // this is a function
++    return 42;
++  }
++)();
+ 
+-(function () {
+-  // this is a function
+-  return 42;
+-})();
++(
++  function () {
++    // this is a function
++    return 42;
++  }
++)();
+ 
+ /* anonymous declaration */
+ export default function () {
+   // this is a function

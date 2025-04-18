@@ -1,0 +1,34 @@
+===================================================================
+--- theirs.ts
++++ ours.ts
+@@ -1,26 +1,17 @@
+ class MyClass {
+-  constructor(
+-    protected x: number,
+-    private y: string,
+-  ) {}
++  constructor(x: number, y: string) {}
+ }
+ 
+ [
+   class {
+-    constructor(
+-      protected x: number,
+-      private y: string,
+-    ) {}
++    constructor(x: number, y: string) {}
+   },
+ ];
+ 
+ class Mixed {
+-  constructor(
+-    public a: number,
+-    b: unknown,
+-  ) {}
++  constructor(a: number, b: unknown) {}
+ }
+ 
+ class OneParameterProperty {
+-  constructor(public foobar: boolean) {}
++  constructor(foobar: boolean) {}
+ }

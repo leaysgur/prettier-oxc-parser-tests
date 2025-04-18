@@ -1,0 +1,27 @@
+===================================================================
+--- theirs.js
++++ ours.js
+@@ -1,15 +1,17 @@
+ // #8736
+ 
+ function HelloWorld() {
+   return (
+-    <div
+-      {...{} /*
++    (
++      <div
++        {...{} /*
+       // @ts-ignore */ /* prettier-ignore */}
+-      invalidProp="HelloWorld"
+-    >
+-      test
+-    </div>
++        invalidProp="HelloWorld"
++      >
++        test
++      </div>
++    )
+   );
+ }
+ 
+ a = <div {.../* prettier-ignore */ b} />;

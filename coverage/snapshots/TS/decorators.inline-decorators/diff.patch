@@ -1,0 +1,23 @@
+===================================================================
+--- theirs.ts
++++ ours.ts
+@@ -27,15 +27,15 @@
+   @d3.bar fieldC;
+   @d4.baz() fieldD;
+ 
+   constructor(
+-    @d1 private x: number,
+-    @d2(foo) private y: number,
+-    @d3("foo") private z: number,
++    @d1 x: number,
++    @d2(foo) y: number,
++    @d3("foo") z: number,
+     @d4({
+       x: string,
+     })
+-    private a: string,
++    a: string,
+   ) {}
+ }
+ 
+ @decorated

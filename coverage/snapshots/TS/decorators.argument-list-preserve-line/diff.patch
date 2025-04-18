@@ -1,0 +1,19 @@
+===================================================================
+--- theirs.ts
++++ ours.ts
+@@ -1,12 +1,12 @@
+ class Foo {
+   constructor(
+     @inject(Bar)
+-    private readonly bar: IBar,
++    bar: IBar,
+ 
+     @inject(MyProcessor)
+-    private readonly myProcessor: IMyProcessor,
++    myProcessor: IMyProcessor,
+ 
+     @inject(InjectionTypes.AnotherThing)
+-    private readonly anotherThing: IAnotherThing | undefined,
++    anotherThing: IAnotherThing | undefined,
+   ) {}
+ }

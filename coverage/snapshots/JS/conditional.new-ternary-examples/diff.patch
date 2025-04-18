@@ -1,0 +1,156 @@
+===================================================================
+--- theirs.js
++++ ours.js
+@@ -66,31 +66,35 @@
+ 
+ // JSX Examples:
+ 
+ const typicalLongConsequentWithNullAlternate = (
+-  <div>
+-    {children && !isEmptyChildren(children) ? (
+-      <FooComponent
+-        className="a bunch of css classes might go here, wow so many"
+-        foo={foo}
+-        bar={includeBar ? bar : null}
+-      />
+-    ) : null}
+-  </div>
++  (
++    <div>
++      {children && !isEmptyChildren(children) ? (
++        <FooComponent
++          className="a bunch of css classes might go here, wow so many"
++          foo={foo}
++          bar={includeBar ? bar : null}
++        />
++      ) : null}
++    </div>
++  )
+ );
+ 
+ const reactRouterExampleJSX = (
+-  <div>
+-    {children && !isEmptyChildren(children)
+-      ? children
+-      : props.match
+-        ? component
+-          ? React.createElement(component, props)
+-          : render
+-            ? render(props)
+-            : null
+-        : null}
+-  </div>
++  (
++    <div>
++      {children && !isEmptyChildren(children)
++        ? children
++        : props.match
++          ? component
++            ? React.createElement(component, props)
++            : render
++              ? render(props)
++              : null
++          : null}
++    </div>
++  )
+ );
+ 
+ const reactRouterExampleNonJSX =
+   children && !isEmptyChildren(children)
+@@ -103,48 +107,60 @@
+           : null
+       : null;
+ 
+ inJSXExpressionContainer.withLongConditionals.example = (
+-  <div>
+-    {isACat() && (someReallyLongCondition || moreInThisLongCondition)
+-      ? someReallyLargeExpression.toMakeMeowNoise().willCauseParens()
+-      : someReallyLongCondition || moreInThisLongCondition
+-        ? bark()
+-        : someReallyLargeExpression.toMakeMeowNoise().willCauseParens()}
+-  </div>
++  (
++    <div>
++      {isACat() && (someReallyLongCondition || moreInThisLongCondition)
++        ? someReallyLargeExpression.toMakeMeowNoise().willCauseParens()
++        : someReallyLongCondition || moreInThisLongCondition
++          ? bark()
++          : someReallyLargeExpression.toMakeMeowNoise().willCauseParens()}
++    </div>
++  )
+ );
+ 
+ inJSXExpressionContainer.withLoops.orBooleans.example = (
+-  <div>
+-    {items
+-      ? items.map((item) =>
+-          item.display ? (
+-            <Item item={item} attr="breaks ternary but not consequent" />
+-          ) : (
+-            <Blank />
+-          ),
+-        )
+-      : null}
++  (
++    <div>
++      {items
++        ? items.map((item) =>
++            item.display ? (
++              <Item item={item} attr="breaks ternary but not consequent" />
++            ) : (
++              <Blank />
++            ),
++          )
++        : null}
+ 
+-    {showTheStuff &&
+-      (foo ? (
+-        <Thing thing={foooooooooooooooooooooooooo} bar="bazzzzzz" />
+-      ) : (
+-        <OtherThing />
+-      ))}
+-  </div>
++      {showTheStuff &&
++        (
++          foo ? (
++            <Thing thing={foooooooooooooooooooooooooo} bar="bazzzzzz" />
++          ) : (
++            <OtherThing />
++          )
++        )}
++    </div>
++  )
+ );
+ 
+ inJSXExpressionContainer.withNullConditional = (
+-  <div>
+-    {isACat() ? null : <Foo />}
+-    {isACat() && (someReallyLongCondition || moreInThisLongCondition) ? null : (
+-      <Foo />
+-    )}
+-    {isACat() &&
+-    (someReallyLongCondition ||
+-      moreInThisLongCondition ||
+-      evenMoreInThisExtraLongConditional) ? null : (
+-      <Foo />
+-    )}
+-  </div>
++  (
++    <div>
++      {isACat() ? null : <Foo />}
++      {isACat() && (someReallyLongCondition || moreInThisLongCondition)
++        ? null
++        : (<Foo />)}
++      {(
++        isACat() &&
++          (
++            someReallyLongCondition ||
++              moreInThisLongCondition ||
++              evenMoreInThisExtraLongConditional
++          )
++      ) ? null : (
++        <Foo />
++      )}
++    </div>
++  )
+ );

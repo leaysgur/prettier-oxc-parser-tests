@@ -1,0 +1,11 @@
+===================================================================
+--- theirs.js
++++ ours.js
+@@ -6,6 +6,6 @@
+    * }
+    * bla bla bla
+    */
+   //2
+-  (window["s"]).toString();
++  ((window["s"])).toString();
+ console.log(a.foo());

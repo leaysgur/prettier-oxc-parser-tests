@@ -1,0 +1,15 @@
+===================================================================
+--- theirs.ts
++++ ours.ts
+@@ -26,9 +26,9 @@
+   constructor(private, public, static) {}
+ }
+ 
+ class F {
+-  constructor(public []) {}
++  constructor([]) {}
+ }
+ class G {
+-  constructor(public {}) {}
++  constructor({}) {}
+ }

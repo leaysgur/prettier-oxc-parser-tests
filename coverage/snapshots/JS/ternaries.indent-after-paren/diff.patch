@@ -1,0 +1,188 @@
+===================================================================
+--- theirs.js
++++ ours.js
+@@ -210,46 +210,68 @@
+ )(Fooooooooooo.Fooooooooooo);
+ 
+ bifornCringerMoshedPerplexSawder =
+   askTrovenaBeenaDependsRowans +
+-  (glimseGlyphsHazardNoopsTieTie === 0
+-    ? averredBathersBoxroomBuggyNurl
+-    : anodyneCondosMalateOverateRetinol)[AnnularCooeedSplicesWalksWayWay];
++  (
++    (
++      glimseGlyphsHazardNoopsTieTie === 0
++        ? averredBathersBoxroomBuggyNurl
++        : anodyneCondosMalateOverateRetinol
++    )[AnnularCooeedSplicesWalksWayWay]
++  );
+ 
+ bifornCringerMoshedPerplexSawder =
+   askTrovenaBeenaDependsRowans +
+-  (glimseGlyphsHazardNoopsTieTie === 0 &&
+-  kochabCooieGameOnOboleUnweave === Math.PI
+-    ? averredBathersBoxroomBuggyNurl
+-    : anodyneCondosMalateOverateRetinol)[AnnularCooeedSplicesWalksWayWay];
++  (
++    (
++      glimseGlyphsHazardNoopsTieTie === 0 &&
++      kochabCooieGameOnOboleUnweave === Math.PI
++        ? averredBathersBoxroomBuggyNurl
++        : anodyneCondosMalateOverateRetinol
++    )[AnnularCooeedSplicesWalksWayWay]
++  );
+ 
+ bifornCringerMoshedPerplexSawder =
+   askTrovenaBeenaDependsRowans +
+-  (glimseGlyphsHazardNoopsTieTie === 0
+-    ? averredBathersBoxroomBuggyNurl
+-    : anodyneCondosMalateOverateRetinol
+-  ).Fooooooooooo.Fooooooooooo;
++  (
++    (
++      glimseGlyphsHazardNoopsTieTie === 0
++        ? averredBathersBoxroomBuggyNurl
++        : anodyneCondosMalateOverateRetinol
++    ).Fooooooooooo.Fooooooooooo
++  );
+ 
+ bifornCringerMoshedPerplexSawder =
+   askTrovenaBeenaDependsRowans +
+-  (glimseGlyphsHazardNoopsTieTie === 0 &&
+-  kochabCooieGameOnOboleUnweave === Math.PI
+-    ? averredBathersBoxroomBuggyNurl
+-    : anodyneCondosMalateOverateRetinol
+-  ).Fooooooooooo.Fooooooooooo;
++  (
++    (
++      glimseGlyphsHazardNoopsTieTie === 0 &&
++      kochabCooieGameOnOboleUnweave === Math.PI
++        ? averredBathersBoxroomBuggyNurl
++        : anodyneCondosMalateOverateRetinol
++    ).Fooooooooooo.Fooooooooooo
++  );
+ 
+ bifornCringerMoshedPerplexSawder =
+   askTrovenaBeenaDependsRowans +
+-  (glimseGlyphsHazardNoopsTieTie === 0
+-    ? averredBathersBoxroomBuggyNurl
+-    : anodyneCondosMalateOverateRetinol)(Fooooooooooo.Fooooooooooo);
++  (
++    (
++      glimseGlyphsHazardNoopsTieTie === 0
++        ? averredBathersBoxroomBuggyNurl
++        : anodyneCondosMalateOverateRetinol
++    )(Fooooooooooo.Fooooooooooo)
++  );
+ 
+ bifornCringerMoshedPerplexSawder =
+   askTrovenaBeenaDependsRowans +
+-  (glimseGlyphsHazardNoopsTieTie === 0 &&
+-    kochabCooieGameOnOboleUnweave === Math.PI
+-    ? averredBathersBoxroomBuggyNurl
+-    : anodyneCondosMalateOverateRetinol)(Fooooooooooo.Fooooooooooo);
++  (
++    (
++      glimseGlyphsHazardNoopsTieTie === 0 &&
++      kochabCooieGameOnOboleUnweave === Math.PI
++        ? averredBathersBoxroomBuggyNurl
++        : anodyneCondosMalateOverateRetinol
++    )(Fooooooooooo.Fooooooooooo)
++  );
+ // TODO(rattrayalex): try to fix this case
+ 
+ bifornCringerMoshedPerplexSawder = (
+   glimseGlyphsHazardNoopsTieTie === 0 &&
+@@ -288,60 +310,68 @@
+   ).foo();
+ };
+ 
+ bifornCringerMoshedPerplexSawder = fn(
+-  (glimseGlyphsHazardNoopsTieTie === 0
+-    ? averredBathersBoxroomBuggyNurl
+-    : anodyneCondosMalateOverateRetinol
++  (
++    glimseGlyphsHazardNoopsTieTie === 0
++      ? averredBathersBoxroomBuggyNurl
++      : anodyneCondosMalateOverateRetinol
+   ).prop,
+ );
+ 
+ fn(
+-  (glimseGlyphsHazardNoopsTieTie === 0
+-    ? averredBathersBoxroomBuggyNurl
+-    : anodyneCondosMalateOverateRetinol
++  (
++    glimseGlyphsHazardNoopsTieTie === 0
++      ? averredBathersBoxroomBuggyNurl
++      : anodyneCondosMalateOverateRetinol
+   ).prop,
+ );
+ 
+ bifornCringerMoshedPerplexSawder = fn?.(
+-  (glimseGlyphsHazardNoopsTieTie === 0
+-    ? averredBathersBoxroomBuggyNurl
+-    : anodyneCondosMalateOverateRetinol
++  (
++    glimseGlyphsHazardNoopsTieTie === 0
++      ? averredBathersBoxroomBuggyNurl
++      : anodyneCondosMalateOverateRetinol
+   ).prop,
+ );
+ 
+ fn?.(
+-  (glimseGlyphsHazardNoopsTieTie === 0
+-    ? averredBathersBoxroomBuggyNurl
+-    : anodyneCondosMalateOverateRetinol
++  (
++    glimseGlyphsHazardNoopsTieTie === 0
++      ? averredBathersBoxroomBuggyNurl
++      : anodyneCondosMalateOverateRetinol
+   ).prop,
+ );
+ 
+ bifornCringerMoshedPerplexSawder =
+   fn[
+-    (glimseGlyphsHazardNoopsTieTie === 0
+-      ? averredBathersBoxroomBuggyNurl
+-      : anodyneCondosMalateOverateRetinol
++    (
++      glimseGlyphsHazardNoopsTieTie === 0
++        ? averredBathersBoxroomBuggyNurl
++        : anodyneCondosMalateOverateRetinol
+     ).prop
+   ];
+ 
+ fn[
+-  (glimseGlyphsHazardNoopsTieTie === 0
+-    ? averredBathersBoxroomBuggyNurl
+-    : anodyneCondosMalateOverateRetinol
++  (
++    glimseGlyphsHazardNoopsTieTie === 0
++      ? averredBathersBoxroomBuggyNurl
++      : anodyneCondosMalateOverateRetinol
+   ).prop
+ ];
+ 
+ bifornCringerMoshedPerplexSawder =
+   fn?.[
+-    (glimseGlyphsHazardNoopsTieTie === 0
+-      ? averredBathersBoxroomBuggyNurl
+-      : anodyneCondosMalateOverateRetinol
++    (
++      glimseGlyphsHazardNoopsTieTie === 0
++        ? averredBathersBoxroomBuggyNurl
++        : anodyneCondosMalateOverateRetinol
+     ).prop
+   ];
+ 
+ fn?.[
+-  (glimseGlyphsHazardNoopsTieTie === 0
+-    ? averredBathersBoxroomBuggyNurl
+-    : anodyneCondosMalateOverateRetinol
++  (
++    glimseGlyphsHazardNoopsTieTie === 0
++      ? averredBathersBoxroomBuggyNurl
++      : anodyneCondosMalateOverateRetinol
+   ).prop
+ ];

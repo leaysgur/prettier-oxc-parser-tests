@@ -1,0 +1,20 @@
+===================================================================
+--- theirs.js
++++ ours.js
+@@ -1,12 +1,12 @@
+ // Member expressions
+ new (a?.b)();
+ new (a.b?.c)();
+ new (a?.b.c)();
+-new a[b?.c]();
+-new (a?.b).c();
+-new a[b?.()]();
+-new (a?.b).c();
++new (a[b?.c])();
++new ((a?.b).c)();
++new (a[b?.()])();
++new ((a?.b).c)();
+ // FIXME: new   ((a?.()).b)   ();
+ 
+ // Call expressions
+ new (a?.())();

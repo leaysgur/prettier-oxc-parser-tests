@@ -1,0 +1,23 @@
+===================================================================
+--- theirs.js
++++ ours.js
+@@ -11,15 +11,15 @@
+   .filter((obj) => !!obj);
+ 
+ (
+   veryLongVeryLongVeryLong ||
+-  anotherVeryLongVeryLongVeryLong ||
+-  veryVeryVeryLongError
++    anotherVeryLongVeryLongVeryLong ||
++    veryVeryVeryLongError
+ ).map((tickets) => TicketRecord.createFromSomeLongString());
+ 
+ (
+   veryLongVeryLongVeryLong ||
+-  anotherVeryLongVeryLongVeryLong ||
+-  veryVeryVeryLongError
++    anotherVeryLongVeryLongVeryLong ||
++    veryVeryVeryLongError
+ )
+   .map((tickets) => TicketRecord.createFromSomeLongString())
+   .filter((obj) => !!obj);

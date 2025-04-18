@@ -1,0 +1,212 @@
+===================================================================
+--- theirs.js
++++ ours.js
+@@ -17,9 +17,9 @@
+ 
+ // unless the consequent is short (less than ten characters long):
+ const shortSoCase = isLoudReallyReallyReallyReallyLoud()
+   ? silent()
+-  : makeNoiseReallyReallyReallyReallyReallyLoudly.omgSoLoud();
++  : (makeNoiseReallyReallyReallyReallyReallyLoudly.omgSoLoud());
+ 
+ // if chained, always break and put after the =
+ const chainedShort = isCat() ? meow() : isDog() ? bark() : silent();
+ 
+@@ -52,21 +52,24 @@
+         .thatWouldCauseALineBreak()
+         .willCauseAnIndentButNotParens();
+ 
+ // multiline conditions and consequents/alternates:
+-const multilineConditionsConsequentsAndAlternates =
++const multilineConditionsConsequentsAndAlternates = (
+   isAnAdorableKittyCat() && (someReallyLongCondition || moreInThisLongCondition)
+-    ? someReallyLargeExpression
+-        .thatWouldCauseALineBreak()
+-        .willCauseAnIndentButNotParens()
+-    : isNotAnAdorableKittyCat() &&
+-        (someReallyLongCondition || moreInThisLongCondition)
+-      ? bark()
+-      : shortCondition()
+-        ? shortConsequent()
+-        : someReallyLargeExpression
+-            .thatWouldCauseALineBreak()
+-            .willCauseAnIndentButNotParens();
++)
++  ? someReallyLargeExpression
++      .thatWouldCauseALineBreak()
++      .willCauseAnIndentButNotParens()
++  : (
++        isNotAnAdorableKittyCat() &&
++          (someReallyLongCondition || moreInThisLongCondition)
++      )
++    ? bark()
++    : shortCondition()
++      ? shortConsequent()
++      : someReallyLargeExpression
++          .thatWouldCauseALineBreak()
++          .willCauseAnIndentButNotParens();
+ 
+ // illustrating case of mostly short conditionals
+ const mostlyShort =
+   x === 1
+@@ -74,34 +77,38 @@
+     : x === 2
+       ? "two"
+       : x === 3
+         ? "three"
+-        : x === 5 &&
+-            y === 7 &&
+-            someOtherThing.thatIsSoLong.thatItBreaksTheTestCondition()
++        : (
++              x === 5 &&
++                y === 7 &&
++                someOtherThing.thatIsSoLong.thatItBreaksTheTestCondition()
++            )
+           ? "four"
+           : x === 6
+             ? "six"
+             : "idk";
+ 
+ // long conditional, short consequent/alternate, not chained - do indent after ?
+-const longConditional =
++const longConditional = (
+   bifornCringerMoshedPerplexSawder === 2 / askTrovenaBeenaDependsRowans &&
+-  glimseGlyphsHazardNoopsTieTie >=
+-    averredBathersBoxroomBuggyNurl().anodyneCondosMalateOverateRetinol()
+-    ? "foo"
+-    : "bar";
++    glimseGlyphsHazardNoopsTieTie >=
++      averredBathersBoxroomBuggyNurl().anodyneCondosMalateOverateRetinol()
++)
++  ? "foo"
++  : "bar";
+ 
+ // long conditional, short consequent/alternate, chained
+ // (break on short consequents iff in chained ternary and its conditional broke)
+-const longConditionalChained =
++const longConditionalChained = (
+   bifornCringerMoshedPerplexSawder === 2 / askTrovenaBeenaDependsRowans &&
+-  glimseGlyphsHazardNoopsTieTie >=
+-    averredBathersBoxroomBuggyNurl().anodyneCondosMalateOverateRetinol()
+-    ? "foo"
+-    : anotherCondition
+-      ? "bar"
+-      : "baz";
++    glimseGlyphsHazardNoopsTieTie >=
++      averredBathersBoxroomBuggyNurl().anodyneCondosMalateOverateRetinol()
++)
++  ? "foo"
++  : anotherCondition
++    ? "bar"
++    : "baz";
+ 
+ // As a function parameter, don't add an extra indent:
+ definition.encode(
+   typeof row[field] !== "undefined"
+@@ -135,40 +142,46 @@
+ // do not add a line before or after it,
+ // and wrap the alternate in parens.
+ 
+ const someJSX = (
+-  <div>
+-    Typical jsx case:
+-    {showFoo ? <Foo attribute="such and such stuff here" /> : <Bar short />}
+-    Nested, and with a non-jsx consequent is the same:
+-    {component ? (
+-      React.createElement(component, props)
+-    ) : render ? (
+-      <div>{render(props)}</div>
+-    ) : (
+-      <div>Nothing is here</div>
+-    )}
+-    As is a non-jsx consequent:
+-    {showTheJSXElement ? <div>the stuff</div> : renderOtherStuff()}
+-    But if the alternate breaks, add a newline before the closing curly brace:
+-    {showTheThing || pleaseShowTheThing ? (
+-      <Foo attribute="such and such stuff here" />
+-    ) : (
+-      <Bar
+-        attribute="such and such stuff here"
+-        another="more stuff here"
+-        third="and even more, hooray!"
+-      />
+-    )}
+-    When the consequent is `null` and the alternate breaks, hug it with parens
+-    to match boolean behavior:
+-    {!thing ? null : (
+-      <TheThing
+-        thing={thing}
+-        someVeryLongPropertyThatBreaksTheAlternate="hello"
+-      />
+-    )}
+-  </div>
++  (
++    <div>
++      Typical jsx case:
++      {showFoo ? <Foo attribute="such and such stuff here" /> : <Bar short />}
++      Nested, and with a non-jsx consequent is the same:
++      {component ? (
++        React.createElement(component, props)
++      ) : render ? (
++        <div>{render(props)}</div>
++      ) : (
++        <div>Nothing is here</div>
++      )}
++      As is a non-jsx consequent:
++      {showTheJSXElement ? <div>the stuff</div> : renderOtherStuff()}
++      But if the alternate breaks, add a newline before the closing curly brace:
++      {showTheThing || pleaseShowTheThing ? (
++        <Foo attribute="such and such stuff here" />
++      ) : (
++        <Bar
++          attribute="such and such stuff here"
++          another="more stuff here"
++          third="and even more, hooray!"
++        />
++      )}
++      When the consequent is `null` and the alternate breaks, hug it with parens
++      to match boolean behavior:
++      {!thing
++        ? null
++        : (
++            (
++              <TheThing
++                thing={thing}
++                someVeryLongPropertyThatBreaksTheAlternate="hello"
++              />
++            )
++          )}
++    </div>
++  )
+ );
+ 
+ ternaryWithJSXElements.hasNoSpecialCasing = component ? (
+   <div>{React.createElement(component, props)}</div>
+@@ -178,15 +191,17 @@
+   <div>Nothing is here</div>
+ );
+ 
+ jsxExpressionContainer.inJSXAttribute.hasNoSpecialCasing = (
+-  <Foo
+-    withJSX={isRed ? <RedColorThing /> : <GreenColorThing />}
+-    withJSXBroken={
+-      isRed || isSomeOtherLongCondition.thatBreaksTheLine() ? (
+-        <RedColorThing />
+-      ) : (
+-        <GreenColorThing />
+-      )
+-    }
+-  />
++  (
++    <Foo
++      withJSX={isRed ? <RedColorThing /> : <GreenColorThing />}
++      withJSXBroken={
++        isRed || isSomeOtherLongCondition.thatBreaksTheLine() ? (
++          <RedColorThing />
++        ) : (
++          <GreenColorThing />
++        )
++      }
++    />
++  )
+ );

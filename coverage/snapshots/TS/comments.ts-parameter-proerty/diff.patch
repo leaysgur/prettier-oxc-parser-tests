@@ -1,0 +1,11 @@
+===================================================================
+--- theirs.ts
++++ ours.ts
+@@ -1,6 +1,6 @@
+ class A {
+   constructor(
+-    private readonly paramProp: Type,
++    paramProp: Type,
+     // comment
+   ) {}
+ }

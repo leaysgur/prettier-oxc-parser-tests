@@ -1,0 +1,61 @@
+===================================================================
+--- theirs.jsx
++++ ours.jsx
+@@ -2,31 +2,41 @@
+   {__DEV__ ? (
+     this.renderDevApp()
+   ) : (
+     <div>
+-      {routes.map((route) => (
+-        <MatchAsync
+-          key={`${route.to}-async`}
+-          pattern={route.to}
+-          exactly={route.to === "/"}
+-          getComponent={routeES6Modules[route.value]}
+-        />
+-      ))}
++      {routes.map(
++        (route) =>
++          (
++            (
++              <MatchAsync
++                key={`${route.to}-async`}
++                pattern={route.to}
++                exactly={route.to === "/"}
++                getComponent={routeES6Modules[route.value]}
++              />
++            )
++          ),
++      )}
+     </div>
+   )}
+ </div>;
+ 
+ <div>
+   {__DEV__ && (
+     <div>
+-      {routes.map((route) => (
+-        <MatchAsync
+-          key={`${route.to}-async`}
+-          pattern={route.to}
+-          exactly={route.to === "/"}
+-          getComponent={routeES6Modules[route.value]}
+-        />
+-      ))}
++      {routes.map(
++        (route) =>
++          (
++            (
++              <MatchAsync
++                key={`${route.to}-async`}
++                pattern={route.to}
++                exactly={route.to === "/"}
++                getComponent={routeES6Modules[route.value]}
++              />
++            )
++          ),
++      )}
+     </div>
+   )}
+ </div>;
+ 

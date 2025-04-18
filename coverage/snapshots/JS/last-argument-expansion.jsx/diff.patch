@@ -1,0 +1,19 @@
+===================================================================
+--- theirs.js
++++ ours.js
+@@ -1,5 +1,10 @@
+-const els = items.map((item) => (
+-  <div className="whatever">
+-    <span>{children}</span>
+-  </div>
+-));
++const els = items.map(
++  (item) =>
++    (
++      (
++        <div className="whatever">
++          <span>{children}</span>
++        </div>
++      )
++    ),
++);

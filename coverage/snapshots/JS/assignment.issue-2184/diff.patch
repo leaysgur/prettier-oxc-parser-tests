@@ -1,0 +1,9 @@
+===================================================================
+--- theirs.js
++++ ours.js
+@@ -1,4 +1,4 @@
+ const areaPercentageDiff = (
+   topRankedZoneFit.areaPercentageRemaining -
+-  previousZoneFitNow.areaPercentageRemaining
++    previousZoneFitNow.areaPercentageRemaining
+ ).toFixed(2);

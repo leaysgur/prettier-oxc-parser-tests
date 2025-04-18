@@ -1,0 +1,33 @@
+===================================================================
+--- theirs.js
++++ ours.js
+@@ -11,17 +11,21 @@
+ class A2 /* a */ extends B {}
+ class A3 extends B /* a */ {}
+ class A4 extends /* a */ B {}
+ 
+-(class A5 // comment 1
+-  // comment 2
+-  extends B {});
++(
++  class A5 // comment 1
++    // comment 2
++    extends B {}
++);
+ 
+-(class A6 extends B {
+-  // comment1
+-  // comment2
+-  // comment3
+-});
++(
++  class A6 extends B {
++    // comment1
++    // comment2
++    // comment3
++  }
++);
+ 
+ (class A7 /* a */ extends B {});
+ (class A8 extends B /* a */ {});
+ (class A9 extends /* a */ B {});

@@ -1,0 +1,25 @@
+===================================================================
+--- theirs.jsx
++++ ours.jsx
+@@ -38,12 +38,16 @@
+   );
+ 
+   const jsx = (
+     <>
+-      {await (
+-        <IncongruousCooperate>
+-          material education original articulate parameter
+-        </IncongruousCooperate>
+-      )}
++      {
++        await (
++          (
++            <IncongruousCooperate>
++              material education original articulate parameter
++            </IncongruousCooperate>
++          )
++        )
++      }
+     </>
+   );
+ }
