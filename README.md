@@ -2,9 +2,6 @@
 
 > [!WARNING]
 > - This is experimental plugin using experimental feature!
-> - Formatted output is not verified yet
-> - May not work for TypeScript, since OXC's TS AST for JavaScript land is not yet stabilized(aims to align TS-ESLint)
->   - See https://github.com/oxc-project/oxc/issues/9705
 
 Prettier plugin for JS(X) and TS(X) files using `oxc-parser` with `experimentalRawTransfer` option. 🚀
 
@@ -17,17 +14,13 @@ prettier --plugin=prettier-plugin-oxc --parser=oxc-ts
 
 ## TODO
 
-- Verify output
-  - Clone Prettier repo for test files
-  - Scan all format test files
-  - Dump `Doc` using `babel` for JS and `typescript` for TS
-  - Dump `Doc` using `oxc`(`preserveParens: true`) for JS and `oxc-ts`(`preserveParens: false`) for TS
-  - Save diff as snapshots
-- Remove `addCommentLocation` transform
-  - This can be done if using Prettier@main
+- Wait or improve TS-ESLint alignment
+  - https://github.com/oxc-project/oxc/issues/9705
 - Postprocess AST
   - JS: Remove useless extra parens
   - JS/TS: rebalance logical exprs, etc...
+- Remove `addCommentLocation` transform
+  - This can be done if using Prettier@main
 
 ## Debug
 
@@ -37,6 +30,21 @@ node debug.js
 ./node_modules/bin/prettier --plugin=prettier-plugin-oxc --parser=oxc debug.js
 ./node_modules/bin/prettier --plugin=prettier-plugin-oxc --parser=oxc ./benchmark/fixtures/0028-kb.js
 ```
+
+## Coverage
+
+```sh
+node coverage/run.js
+```
+
+┌─────────┬──────────────┬──────────────┬────────────┬─────────┬─────────┬───────────┐
+│ (index) │ theirsFailed │ testerFailed │ oursFailed │ matched │ created │ coverage  │
+├─────────┼──────────────┼──────────────┼────────────┼─────────┼─────────┼───────────┤
+│ JS      │ 86           │ 155          │ 9          │ 541     │ 115     │ '82.47%'  │
+│ JSX     │ 7            │ 3            │ 0          │ 30      │ 22      │ '57.69%'  │
+│ TS      │ 22           │ 6            │ 35         │ 432     │ 45      │ '90.57%'  │
+│ TSX     │ 6            │ 3            │ 0          │ 53      │ 0       │ '100.00%' │
+└─────────┴──────────────┴──────────────┴────────────┴─────────┴─────────┴───────────┘
 
 ## Benchmark
 
