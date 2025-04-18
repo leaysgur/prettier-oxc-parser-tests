@@ -34,6 +34,7 @@ node debug.js
 ## Coverage
 
 ```sh
+# Clone prettier repo next to this repo, then
 node coverage/run.js
 ```
 
