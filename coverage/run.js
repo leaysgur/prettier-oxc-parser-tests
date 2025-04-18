@@ -8,17 +8,17 @@ const PRETTIER_FORMAT_TESTS_DIR = resolve("../prettier/tests/format");
 const DIFF_SNAPSHOTS_DIR = resolve("./coverage/snapshots");
 
 const stats = {};
-for (const [PRETTIER_DIR, category, theirsParser, testParser, oursParser] of [
-  ["js", "JS", "babel", "acorn", "oxc"],
-  ["jsx", "JSX", "babel", "acorn", "oxc"],
-  ["typescript", "TS", "babel-ts", "typescript", "oxc-ts"],
-  ["jsx", "TSX", "babel-ts", "typescript", "oxc-ts"],
+for (const [PRETTIER_DIR, ext, theirsParser, testParser, oursParser] of [
+  ["js", "js", "babel", "acorn", "oxc"],
+  ["jsx", "jsx", "babel", "acorn", "oxc"],
+  ["typescript", "ts", "typescript", "typescript", "oxc-ts"],
+  ["jsx", "tsx", "typescript", "typescript", "oxc-ts"],
 ]) {
-  await rm([DIFF_SNAPSHOTS_DIR, category].join("/"), {
+  await rm([DIFF_SNAPSHOTS_DIR, ext].join("/"), {
     recursive: true,
     force: true,
   });
-  await mkdir([DIFF_SNAPSHOTS_DIR, category].join("/"), { recursive: true });
+  await mkdir([DIFF_SNAPSHOTS_DIR, ext].join("/"), { recursive: true });
 
   const testAbsPaths = await glob([PRETTIER_DIR], {
     cwd: PRETTIER_FORMAT_TESTS_DIR,
@@ -75,7 +75,6 @@ for (const [PRETTIER_DIR, category, theirsParser, testParser, oursParser] of [
       continue;
     }
 
-    const ext = category.toLowerCase();
     const id = testAbsPath
       .split(PRETTIER_FORMAT_TESTS_DIR)
       .pop()
@@ -110,7 +109,7 @@ for (const [PRETTIER_DIR, category, theirsParser, testParser, oursParser] of [
     counter.created++;
   }
 
-  stats[category] = {
+  stats[ext] = {
     ...counter,
     coverage:
       ((counter.matched / (counter.matched + counter.created)) * 100).toFixed(

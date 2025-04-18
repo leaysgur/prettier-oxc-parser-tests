@@ -1,0 +1,20 @@
+===================================================================
+--- theirs.ts
++++ ours.ts
+@@ -1,13 +1,13 @@
+ class C {
+-  constructor(readonly x: number) {}
++  constructor(x: number) {}
+ }
+ new C(1).x = 2;
+ 
+ class E {
+-  constructor(public readonly x: number) {}
++  constructor(x: number) {}
+ }
+ 
+ class F {
+-  constructor(private readonly x: number) {}
++  constructor(x: number) {}
+ }
+ new F(1).x;

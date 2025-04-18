@@ -12,10 +12,17 @@ prettier --plugin=prettier-plugin-oxc --parser=oxc
 prettier --plugin=prettier-plugin-oxc --parser=oxc-ts
 ```
 
+Drop in replacement for:
+
+- JS(X): `babel` parser
+- TS(X): `typescript` parser
+
 ## TODO
 
 - Wait or improve TS-ESLint alignment
   - https://github.com/oxc-project/oxc/issues/9705
+- Verify diffs
+- Add benchmark for TS(X)
 - Postprocess AST
   - JS: Remove useless extra parens
   - JS/TS: rebalance logical exprs, etc...
@@ -42,10 +49,10 @@ node coverage/run.js
 ┌─────────┬──────────────┬──────────────┬────────────┬─────────┬─────────┬───────────┐
 │ (index) │ theirsFailed │ testerFailed │ oursFailed │ matched │ created │ coverage  │
 ├─────────┼──────────────┼──────────────┼────────────┼─────────┼─────────┼───────────┤
-│ JS      │ 86           │ 155          │ 9          │ 541     │ 115     │ '82.47%'  │
-│ JSX     │ 7            │ 3            │ 0          │ 30      │ 22      │ '57.69%'  │
-│ TS      │ 22           │ 6            │ 35         │ 432     │ 45      │ '90.57%'  │
-│ TSX     │ 6            │ 3            │ 0          │ 53      │ 0       │ '100.00%' │
+│ js      │ 86           │ 155          │ 9          │ 541     │ 115     │ '82.47%'  │
+│ jsx     │ 7            │ 3            │ 0          │ 30      │ 22      │ '57.69%'  │
+│ ts      │ 19           │ 0            │ 41         │ 434     │ 46      │ '90.42%'  │
+│ tsx     │ 9            │ 0            │ 0          │ 53      │ 0       │ '100.00%' │
 └─────────┴──────────────┴──────────────┴────────────┴─────────┴─────────┴───────────┘
 ```
 
