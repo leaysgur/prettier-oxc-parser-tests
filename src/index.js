@@ -57,8 +57,9 @@ function createParser(isJS) {
       // But for comments, `loc.(start|end)` seems to be used.
       //
       // Prettier `main` branch refactored this part, so we can remove this once it get merged
+      addCommentLocation(parsed.comments, code);
       // @ts-expect-error: `comments` does not exist on `Program`
-      ast.comments = addCommentLocation(parsed.comments, code);
+      ast.comments = parsed.comments;
 
       // NOTE: Since we set `preserveParens` to `true`,
       // we need to remove the extra parens manually like Prettier does for `babel` parser.

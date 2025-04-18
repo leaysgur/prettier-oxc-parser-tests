@@ -8,7 +8,7 @@
  * @param {string} sourceText
  */
 export function addCommentLocation(comments, sourceText) {
-  if (comments.length === 0) return comments;
+  if (comments.length === 0) return;
 
   // Precompute line start positions
   const lineStarts = [0];
