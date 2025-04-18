@@ -4,6 +4,7 @@ import * as prettier from "prettier";
 // import { readFileSync} from "node:fs";
 // const CODE = readFileSync("./benchmark/fixtures/3930-kb.js", "utf-8");
 const CODE = `
+// aooo
 let a,b=1,c=[2,3,,4,]
 `;
 
@@ -19,13 +20,19 @@ let a,b=1,c=[2,3,,4,]
 console.log("👻 Original:");
 console.log(CODE);
 
-const formatted = await prettier.format(CODE, {
+const theirs = await prettier.format(CODE, {
   // parser: "babel-ts",
   // parser: "oxc-ts",
-  // parser: "babel",
+  parser: "babel",
+  plugins: [],
+});
+
+console.log(`✨ Prettier@${prettier.version}+babel:`);
+console.log(theirs);
+
+console.log(`✨ Ours:`);
+const ours = await prettier.format(CODE, {
   parser: "oxc",
   plugins: ["./src/index.js"],
 });
-
-console.log(`✨ Prettier@${prettier.version}:`);
-console.log(formatted);
+console.log(ours);
