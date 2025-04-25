@@ -12,22 +12,23 @@ prettier --plugin=prettier-plugin-oxc --parser=oxc
 prettier --plugin=prettier-plugin-oxc --parser=oxc-ts
 ```
 
-Drop in replacement for:
+This plugin aims to be drop in replacement for:
 
 - JS(X): `babel` parser
 - TS(X): `typescript` parser
 
 ## TODO
 
-- Wait or improve TS-ESLint alignment
-  - https://github.com/oxc-project/oxc/issues/9705
-- Verify diffs
 - Add benchmark for TS(X)
 - Postprocess AST
   - JS: Remove useless extra parens
   - JS/TS: rebalance logical exprs, etc...
-- Remove `addCommentLocation` transform
-  - This can be done if using Prettier@main
+- Wait or improve TS-ESLint alignment
+  - https://github.com/oxc-project/oxc/issues/9705
+  - Then verify diffs
+- Support `SourceLocation`(`loc.start/end`)
+  - This can be done if using Prettier@main, but not yet released
+  - Need to support both normal nodes and comments
 
 ## Debug
 
@@ -62,82 +63,79 @@ node coverage/run.js
 node --expose-gc benchmark/run.js
 ```
 
-> [!WARNING]
-> This benchmark does not verify formatted output.
-
-- OXC version: `0.63.0`
+- OXC version: `0.66.0`
 - Prettier version: `3.5.3`
 
 ### JS(X)
 #### 0000-kb.js
-clk: ~3.81 GHz
-cpu: Apple M3
-runtime: node 22.14.0 (arm64-darwin)
-
-| benchmark |              avg |         min |         p75 |         p99 |         max |
-| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `103.87 µs/iter` | ` 78.63 µs` | ` 97.88 µs` | `535.00 µs` | `  1.82 ms` |
-| babel | `101.72 µs/iter` | ` 81.79 µs` | ` 97.67 µs` | `492.00 µs` | `  1.56 ms` |
-
-#### 0001-kb.js
-clk: ~3.81 GHz
-cpu: Apple M3
-runtime: node 22.14.0 (arm64-darwin)
-
-| benchmark |              avg |         min |         p75 |         p99 |         max |
-| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `639.80 µs/iter` | `509.79 µs` | `639.75 µs` | `  1.47 ms` | `  2.51 ms` |
-| babel | `769.63 µs/iter` | `598.42 µs` | `797.25 µs` | `  1.47 ms` | `  2.43 ms` |
-
-#### 0003-kb.jsx
 clk: ~3.80 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
 | benchmark |              avg |         min |         p75 |         p99 |         max |
 | ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `  1.21 ms/iter` | `  1.01 ms` | `  1.26 ms` | `  2.34 ms` | `  3.03 ms` |
-| babel | `  1.54 ms/iter` | `  1.28 ms` | `  1.67 ms` | `  2.74 ms` | `  3.46 ms` |
+| oxc   | `106.47 µs/iter` | ` 78.75 µs` | ` 98.46 µs` | `525.67 µs` | `  2.30 ms` |
+| babel | `102.69 µs/iter` | ` 81.25 µs` | ` 97.92 µs` | `494.58 µs` | `  1.56 ms` |
+
+#### 0001-kb.js
+clk: ~3.80 GHz
+cpu: Apple M3
+runtime: node 22.14.0 (arm64-darwin)
+
+| benchmark |              avg |         min |         p75 |         p99 |         max |
+| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
+| oxc   | `636.01 µs/iter` | `522.67 µs` | `633.21 µs` | `  1.43 ms` | `  2.44 ms` |
+| babel | `774.02 µs/iter` | `626.71 µs` | `805.50 µs` | `  1.48 ms` | `  2.47 ms` |
+
+#### 0003-kb.jsx
+clk: ~3.76 GHz
+cpu: Apple M3
+runtime: node 22.14.0 (arm64-darwin)
+
+| benchmark |              avg |         min |         p75 |         p99 |         max |
+| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
+| oxc   | `  1.19 ms/iter` | `  1.03 ms` | `  1.24 ms` | `  2.30 ms` | `  2.91 ms` |
+| babel | `  1.54 ms/iter` | `  1.27 ms` | `  1.69 ms` | `  2.66 ms` | `  3.86 ms` |
 
 #### 0005-kb.js
-clk: ~3.74 GHz
+clk: ~3.61 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
 | benchmark |              avg |         min |         p75 |         p99 |         max |
 | ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `  1.03 ms/iter` | `908.04 µs` | `  1.01 ms` | `  2.14 ms` | `  2.87 ms` |
-| babel | `  1.58 ms/iter` | `  1.28 ms` | `  1.67 ms` | `  3.20 ms` | `  3.76 ms` |
+| oxc   | `  1.16 ms/iter` | `998.25 µs` | `  1.18 ms` | `  2.21 ms` | `  3.13 ms` |
+| babel | `  1.56 ms/iter` | `  1.30 ms` | `  1.64 ms` | `  2.72 ms` | `  3.42 ms` |
 
 #### 0006-kb.jsx
-clk: ~3.68 GHz
+clk: ~3.59 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
 | benchmark |              avg |         min |         p75 |         p99 |         max |
 | ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `  1.56 ms/iter` | `  1.36 ms` | `  1.62 ms` | `  3.10 ms` | `  3.86 ms` |
-| babel | `  2.17 ms/iter` | `  1.77 ms` | `  2.36 ms` | `  3.86 ms` | `  5.07 ms` |
+| oxc   | `  1.68 ms/iter` | `  1.46 ms` | `  1.76 ms` | `  3.60 ms` | `  4.11 ms` |
+| babel | `  2.26 ms/iter` | `  1.76 ms` | `  2.42 ms` | `  4.08 ms` | `  4.85 ms` |
 
 #### 0010-kb.js
-clk: ~3.57 GHz
+clk: ~3.54 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
 | benchmark |              avg |         min |         p75 |         p99 |         max |
 | ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `  2.40 ms/iter` | `  2.11 ms` | `  2.51 ms` | `  3.88 ms` | `  4.73 ms` |
-| babel | `  3.39 ms/iter` | `  2.71 ms` | `  3.54 ms` | `  6.18 ms` | `  6.97 ms` |
+| oxc   | `  2.65 ms/iter` | `  2.24 ms` | `  2.76 ms` | `  4.75 ms` | `  5.26 ms` |
+| babel | `  3.44 ms/iter` | `  2.79 ms` | `  3.61 ms` | `  6.09 ms` | `  7.01 ms` |
 
 #### 0028-kb.js
-clk: ~3.55 GHz
+clk: ~3.53 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
 | benchmark |              avg |         min |         p75 |         p99 |         max |
 | ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `  7.01 ms/iter` | `  6.24 ms` | `  7.15 ms` | `  8.93 ms` | `  9.45 ms` |
-| babel | `  9.41 ms/iter` | `  8.35 ms` | `  9.49 ms` | ` 13.46 ms` | ` 14.60 ms` |
+| oxc   | `  7.44 ms/iter` | `  6.50 ms` | `  7.66 ms` | `  9.63 ms` | ` 10.15 ms` |
+| babel | `  9.30 ms/iter` | `  8.37 ms` | `  9.30 ms` | ` 12.42 ms` | ` 13.56 ms` |
 
 #### 0080-kb.mjs
 clk: ~3.55 GHz
@@ -146,8 +144,8 @@ runtime: node 22.14.0 (arm64-darwin)
 
 | benchmark |              avg |         min |         p75 |         p99 |         max |
 | ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | ` 50.91 ms/iter` | ` 48.30 ms` | ` 50.59 ms` | ` 54.41 ms` | ` 60.83 ms` |
-| babel | ` 77.60 ms/iter` | ` 65.33 ms` | ` 75.51 ms` | ` 89.22 ms` | `121.41 ms` |
+| oxc   | ` 51.29 ms/iter` | ` 47.90 ms` | ` 51.53 ms` | ` 53.07 ms` | ` 62.47 ms` |
+| babel | ` 76.53 ms/iter` | ` 63.74 ms` | ` 76.91 ms` | ` 90.15 ms` | `119.21 ms` |
 
 #### 0143-kb.js
 clk: ~3.55 GHz
@@ -156,18 +154,18 @@ runtime: node 22.14.0 (arm64-darwin)
 
 | benchmark |              avg |         min |         p75 |         p99 |         max |
 | ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | ` 43.70 ms/iter` | ` 41.30 ms` | ` 42.87 ms` | ` 48.26 ms` | ` 52.48 ms` |
-| babel | ` 75.68 ms/iter` | ` 56.05 ms` | ` 65.63 ms` | `114.02 ms` | `149.14 ms` |
+| oxc   | ` 45.66 ms/iter` | ` 43.03 ms` | ` 46.43 ms` | ` 48.51 ms` | ` 54.47 ms` |
+| babel | ` 66.13 ms/iter` | ` 56.23 ms` | ` 65.92 ms` | ` 84.61 ms` | `105.15 ms` |
 
 #### 0554-kb.js
-clk: ~3.55 GHz
+clk: ~3.46 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
 | benchmark |              avg |         min |         p75 |         p99 |         max |
 | ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `185.70 ms/iter` | `171.09 ms` | `180.65 ms` | `234.04 ms` | `236.70 ms` |
-| babel | `361.66 ms/iter` | `314.60 ms` | `358.94 ms` | `405.87 ms` | `518.68 ms` |
+| oxc   | `186.36 ms/iter` | `174.02 ms` | `184.07 ms` | `187.01 ms` | `249.51 ms` |
+| babel | `346.78 ms/iter` | `308.25 ms` | `343.96 ms` | `383.72 ms` | `455.20 ms` |
 
 #### 3930-kb.js
 clk: ~3.55 GHz
@@ -176,6 +174,5 @@ runtime: node 22.14.0 (arm64-darwin)
 
 | benchmark |              avg |         min |         p75 |         p99 |         max |
 | ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `   1.13 s/iter` | `   1.10 s` | `   1.13 s` | `   1.16 s` | `   1.21 s` |
-| babel | `   3.51 s/iter` | `   3.42 s` | `   3.53 s` | `   3.55 s` | `   3.56 s` |
-
+| oxc   | error: Cannot read properties of undefined (reading 'start') |
+| babel | `   3.52 s/iter` | `   3.43 s` | `   3.55 s` | `   3.62 s` | `   3.73 s` |
