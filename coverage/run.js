@@ -3,8 +3,7 @@ import { resolve } from "node:path";
 import { glob } from "tinyglobby";
 import { createTwoFilesPatch } from "diff";
 import * as prettier from "prettier";
-import ourPkg from "../package.json" with { type: "json" };
-import theirsPkg from "../../prettier/package.json" with { type: "json" };
+import pkg from "../package.json" with { type: "json" };
 
 const PRETTIER_FORMAT_TESTS_DIR = resolve("../prettier/tests/format");
 const DIFF_SNAPSHOTS_DIR = resolve("./coverage/snapshots");
@@ -120,7 +119,7 @@ for (const [PRETTIER_DIR, ext, theirsParser, testParser, oursParser] of [
   };
 }
 
-console.log(`- OXC version:`, "`" + ourPkg.dependencies["oxc-parser"] + "`");
-console.log(`- Prettier version:`, "`" + theirsPkg.version + "`");
-console.log();
+console.log(`- OXC version:`, "`" + pkg.dependencies["oxc-parser"] + "`");
+console.log("- Prettier version:", "`" + pkg.devDependencies.prettier + "`");
+console.log("");
 console.table(stats);
