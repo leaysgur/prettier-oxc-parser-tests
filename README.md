@@ -26,9 +26,12 @@ This plugin aims to be drop in replacement for:
 - Wait or improve TS-ESLint alignment
   - https://github.com/oxc-project/oxc/issues/9705
   - Then verify diffs
-- Support `SourceLocation`(`loc.start/end`)
-  - This can be done if using Prettier@main, but not yet released
-  - Need to support both normal nodes and comments
+- Support `SourceLocation`(`loc.start/end`)?
+  - This is not necessary if using Prettier@main, but not yet released
+  - OXC also plans to implement this, but not yet started
+    - https://github.com/oxc-project/oxc/issues/10307
+  - This is needed for both normal nodes and comments
+    - Current `3930-kb.js` bench failing is due to luck of this for `BreakStatement`
 
 ## Debug
 
