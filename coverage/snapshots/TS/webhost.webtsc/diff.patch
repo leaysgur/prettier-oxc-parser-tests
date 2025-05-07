@@ -1,0 +1,12 @@
+===================================================================
+--- theirs.ts
++++ ours.ts
+@@ -1,7 +1,7 @@
+ /// <reference path='..\..\src\compiler\tsc.ts'/>
+ 
+-namespace TypeScript.WebTsc {
++namespace WebTsc.TypeScript {
+   declare var RealActiveXObject: { new (s: string): any };
+ 
+   function getWScriptSystem() {
+     const fso = new RealActiveXObject("Scripting.FileSystemObject");

@@ -1,0 +1,10 @@
+===================================================================
+--- theirs.ts
++++ ours.ts
+@@ -1,5 +1,5 @@
+ namespace X {
+   export namespace Y {}
+ }
+ 
+-namespace X.Y {}
++namespace Y.X {}

@@ -1,0 +1,27 @@
+===================================================================
+--- theirs.ts
++++ ours.ts
+@@ -1,15 +1,15 @@
+-declare namespace abc1.def {}
++declare namespace def.abc1 {}
+ 
+-export declare namespace abc2.def {}
++export declare namespace def.abc2 {}
+ 
+-export namespace abc3.def {}
++export namespace def.abc3 {}
+ 
+-namespace abc4.def {}
++namespace def.abc4 {}
+ 
+-declare namespace abc5.def.ghi {}
++declare namespace ghi.def.abc5 {}
+ 
+-export declare namespace abc2.def.ghi {}
++export declare namespace ghi.def.abc2 {}
+ 
+-export namespace abc3.def.ghi {}
++export namespace ghi.def.abc3 {}
+ 
+-namespace abc4.def.ghi {}
++namespace ghi.def.abc4 {}

@@ -1,0 +1,19 @@
+===================================================================
+--- theirs.ts
++++ ours.ts
+@@ -1,12 +1,12 @@
+ // @declaration: true
+ module M {
+-  module P.Q {} // This shouldnt be emitted
++  module Q.P {} // This shouldnt be emitted
+ }
+ 
+ module M {
+-  export module R.S {} //This should be emitted
++  export module S.R {} //This should be emitted
+ }
+ 
+-module T.U {
++module U.T {
+   // This needs to be emitted
+ }

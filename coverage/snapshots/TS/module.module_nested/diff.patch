@@ -1,0 +1,27 @@
+===================================================================
+--- theirs.ts
++++ ours.ts
+@@ -1,15 +1,15 @@
+-declare module abc1.def {}
++declare module def.abc1 {}
+ 
+-export declare module abc2.def {}
++export declare module def.abc2 {}
+ 
+-export module abc3.def {}
++export module def.abc3 {}
+ 
+-module abc4.def {}
++module def.abc4 {}
+ 
+-declare module abc5.def.ghi {}
++declare module ghi.def.abc5 {}
+ 
+-export declare module abc2.def.ghi {}
++export declare module ghi.def.abc2 {}
+ 
+-export module abc3.def.ghi {}
++export module ghi.def.abc3 {}
+ 
+-module abc4.def.ghi {}
++module ghi.def.abc4 {}

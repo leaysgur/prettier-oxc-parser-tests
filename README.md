@@ -46,13 +46,16 @@ node debug.js
 node coverage/run.js
 ```
 
+- OXC version: `0.68.1`
+- Prettier version: `3.5.3`
+
 ```
 ┌─────────┬──────────────┬──────────────┬────────────┬─────────┬─────────┬───────────┐
 │ (index) │ theirsFailed │ testerFailed │ oursFailed │ matched │ created │ coverage  │
 ├─────────┼──────────────┼──────────────┼────────────┼─────────┼─────────┼───────────┤
-│ js      │ 86           │ 155          │ 7          │ 543     │ 115     │ '82.52%'  │
+│ js      │ 86           │ 155          │ 7          │ 547     │ 113     │ '82.88%'  │
 │ jsx     │ 7            │ 3            │ 0          │ 30      │ 22      │ '57.69%'  │
-│ ts      │ 19           │ 0            │ 56         │ 457     │ 8       │ '98.28%'  │
+│ ts      │ 19           │ 0            │ 56         │ 451     │ 14      │ '96.99%'  │
 │ tsx     │ 9            │ 0            │ 0          │ 53      │ 0       │ '100.00%' │
 └─────────┴──────────────┴──────────────┴────────────┴─────────┴─────────┴───────────┘
 ```
@@ -63,7 +66,7 @@ node coverage/run.js
 node --expose-gc benchmark/run.js
 ```
 
-- OXC version: `0.66.0`
+- OXC version: `0.68.1`
 - Prettier version: `3.5.3`
 
 ### JS(X)
@@ -74,105 +77,106 @@ runtime: node 22.14.0 (arm64-darwin)
 
 | benchmark |              avg |         min |         p75 |         p99 |         max |
 | ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `106.47 µs/iter` | ` 78.75 µs` | ` 98.46 µs` | `525.67 µs` | `  2.30 ms` |
-| babel | `102.69 µs/iter` | ` 81.25 µs` | ` 97.92 µs` | `494.58 µs` | `  1.56 ms` |
+| oxc   | `104.52 µs/iter` | ` 78.58 µs` | ` 98.13 µs` | `527.42 µs` | `  1.70 ms` |
+| babel | `101.39 µs/iter` | ` 81.63 µs` | ` 97.96 µs` | `481.29 µs` | `  1.44 ms` |
 
 #### 0001-kb.js
+clk: ~3.81 GHz
+cpu: Apple M3
+runtime: node 22.14.0 (arm64-darwin)
+
+| benchmark |              avg |         min |         p75 |         p99 |         max |
+| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
+| oxc   | `634.66 µs/iter` | `507.42 µs` | `637.88 µs` | `  1.39 ms` | `  2.45 ms` |
+| babel | `766.60 µs/iter` | `600.54 µs` | `788.50 µs` | `  1.46 ms` | `  2.40 ms` |
+
+#### 0003-kb.jsx
 clk: ~3.80 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
 | benchmark |              avg |         min |         p75 |         p99 |         max |
 | ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `636.01 µs/iter` | `522.67 µs` | `633.21 µs` | `  1.43 ms` | `  2.44 ms` |
-| babel | `774.02 µs/iter` | `626.71 µs` | `805.50 µs` | `  1.48 ms` | `  2.47 ms` |
-
-#### 0003-kb.jsx
-clk: ~3.76 GHz
-cpu: Apple M3
-runtime: node 22.14.0 (arm64-darwin)
-
-| benchmark |              avg |         min |         p75 |         p99 |         max |
-| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `  1.19 ms/iter` | `  1.03 ms` | `  1.24 ms` | `  2.30 ms` | `  2.91 ms` |
-| babel | `  1.54 ms/iter` | `  1.27 ms` | `  1.69 ms` | `  2.66 ms` | `  3.86 ms` |
+| oxc   | `  1.18 ms/iter` | `  1.03 ms` | `  1.21 ms` | `  2.29 ms` | `  3.04 ms` |
+| babel | `  1.77 ms/iter` | `  1.30 ms` | `  1.81 ms` | `  5.26 ms` | `  6.74 ms` |
 
 #### 0005-kb.js
-clk: ~3.61 GHz
+clk: ~3.52 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
 | benchmark |              avg |         min |         p75 |         p99 |         max |
 | ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `  1.16 ms/iter` | `998.25 µs` | `  1.18 ms` | `  2.21 ms` | `  3.13 ms` |
-| babel | `  1.56 ms/iter` | `  1.30 ms` | `  1.64 ms` | `  2.72 ms` | `  3.42 ms` |
+| oxc   | `  1.12 ms/iter` | `972.92 µs` | `  1.13 ms` | `  1.94 ms` | `  2.92 ms` |
+| babel | `  1.52 ms/iter` | `  1.28 ms` | `  1.63 ms` | `  2.73 ms` | `  3.46 ms` |
 
 #### 0006-kb.jsx
-clk: ~3.59 GHz
+clk: ~3.55 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
 | benchmark |              avg |         min |         p75 |         p99 |         max |
 | ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `  1.68 ms/iter` | `  1.46 ms` | `  1.76 ms` | `  3.60 ms` | `  4.11 ms` |
-| babel | `  2.26 ms/iter` | `  1.76 ms` | `  2.42 ms` | `  4.08 ms` | `  4.85 ms` |
+| oxc   | `  1.71 ms/iter` | `  1.47 ms` | `  1.79 ms` | `  3.23 ms` | `  4.78 ms` |
+| babel | `  2.24 ms/iter` | `  1.80 ms` | `  2.44 ms` | `  4.13 ms` | `  4.58 ms` |
 
 #### 0010-kb.js
+clk: ~3.55 GHz
+cpu: Apple M3
+runtime: node 22.14.0 (arm64-darwin)
+
+| benchmark |              avg |         min |         p75 |         p99 |         max |
+| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
+| oxc   | `  2.54 ms/iter` | `  2.21 ms` | `  2.64 ms` | `  4.37 ms` | `  5.09 ms` |
+| babel | `  3.36 ms/iter` | `  2.73 ms` | `  3.52 ms` | `  6.86 ms` | `  7.15 ms` |
+
+#### 0028-kb.js
 clk: ~3.54 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
 | benchmark |              avg |         min |         p75 |         p99 |         max |
 | ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `  2.65 ms/iter` | `  2.24 ms` | `  2.76 ms` | `  4.75 ms` | `  5.26 ms` |
-| babel | `  3.44 ms/iter` | `  2.79 ms` | `  3.61 ms` | `  6.09 ms` | `  7.01 ms` |
+| oxc   | `  7.49 ms/iter` | `  6.55 ms` | `  7.72 ms` | `  9.76 ms` | ` 10.09 ms` |
+| babel | `  9.60 ms/iter` | `  8.52 ms` | `  9.97 ms` | ` 12.44 ms` | ` 12.70 ms` |
 
-#### 0028-kb.js
+#### 0080-kb.mjs
 clk: ~3.53 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
 | benchmark |              avg |         min |         p75 |         p99 |         max |
 | ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `  7.44 ms/iter` | `  6.50 ms` | `  7.66 ms` | `  9.63 ms` | ` 10.15 ms` |
-| babel | `  9.30 ms/iter` | `  8.37 ms` | `  9.30 ms` | ` 12.42 ms` | ` 13.56 ms` |
-
-#### 0080-kb.mjs
-clk: ~3.55 GHz
-cpu: Apple M3
-runtime: node 22.14.0 (arm64-darwin)
-
-| benchmark |              avg |         min |         p75 |         p99 |         max |
-| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | ` 51.29 ms/iter` | ` 47.90 ms` | ` 51.53 ms` | ` 53.07 ms` | ` 62.47 ms` |
-| babel | ` 76.53 ms/iter` | ` 63.74 ms` | ` 76.91 ms` | ` 90.15 ms` | `119.21 ms` |
+| oxc   | ` 51.03 ms/iter` | ` 48.28 ms` | ` 53.04 ms` | ` 53.97 ms` | ` 56.42 ms` |
+| babel | ` 77.04 ms/iter` | ` 64.49 ms` | ` 74.67 ms` | ` 90.58 ms` | `124.05 ms` |
 
 #### 0143-kb.js
-clk: ~3.55 GHz
+clk: ~3.52 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
 | benchmark |              avg |         min |         p75 |         p99 |         max |
 | ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | ` 45.66 ms/iter` | ` 43.03 ms` | ` 46.43 ms` | ` 48.51 ms` | ` 54.47 ms` |
-| babel | ` 66.13 ms/iter` | ` 56.23 ms` | ` 65.92 ms` | ` 84.61 ms` | `105.15 ms` |
+| oxc   | ` 45.67 ms/iter` | ` 42.36 ms` | ` 46.43 ms` | ` 50.47 ms` | ` 55.20 ms` |
+| babel | ` 66.11 ms/iter` | ` 56.78 ms` | ` 63.53 ms` | ` 87.18 ms` | `103.47 ms` |
 
 #### 0554-kb.js
-clk: ~3.46 GHz
+clk: ~3.54 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
 | benchmark |              avg |         min |         p75 |         p99 |         max |
 | ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `186.36 ms/iter` | `174.02 ms` | `184.07 ms` | `187.01 ms` | `249.51 ms` |
-| babel | `346.78 ms/iter` | `308.25 ms` | `343.96 ms` | `383.72 ms` | `455.20 ms` |
+| oxc   | `187.85 ms/iter` | `175.08 ms` | `184.83 ms` | `192.61 ms` | `252.55 ms` |
+| babel | `353.55 ms/iter` | `313.53 ms` | `354.15 ms` | `405.28 ms` | `490.08 ms` |
 
 #### 3930-kb.js
-clk: ~3.55 GHz
+clk: ~3.53 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
 | benchmark |              avg |         min |         p75 |         p99 |         max |
 | ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
 | oxc   | error: Cannot read properties of undefined (reading 'start') |
-| babel | `   3.52 s/iter` | `   3.43 s` | `   3.55 s` | `   3.62 s` | `   3.73 s` |
+| babel | `   3.52 s/iter` | `   3.34 s` | `   3.56 s` | `   3.64 s` | `   3.74 s` |
+
