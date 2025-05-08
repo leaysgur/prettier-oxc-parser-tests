@@ -20,18 +20,15 @@ export const parsers = {
   ["oxc-ts"]: createParser(false),
 };
 
-/** @param {boolean} isJS */
-function createParser(isJS) {
-  // Enable JSX by default
-  const fileName = isJS ? "dummy.jsx" : "dummy.tsx";
-
+/** @param {boolean} preserveParens */
+function createParser(preserveParens) {
   return {
     /**
      * @param {string} code
-     * @param {import("prettier").Options} _options
+     * @param {import("prettier").Options} options
      */
-    parse: (code, _options) => {
-      const parsed = parseSync(fileName, code, {
+    parse: (code, options) => {
+      const parsed = parseSync(options.filepath ?? "dummy.tsx", code, {
         // NOTE: This should be `false` to state that AST is "ESTree" compatible,
         // since `ParenthesizedExpression` is not defined in `ESTree`.
         //
@@ -39,7 +36,7 @@ function createParser(isJS) {
         // To avoid this, we need to emulate `babel` behavior by setting this to `true`.
         //
         // For TS, it seems that ommiting parens is not a problem.
-        preserveParens: isJS,
+        preserveParens,
         // NOTE: Do not check semantic errors like Prettier does.
         // - JS: `babel` parser uses `errorRecovery` option
         // - TS: `typescript` parser uses `@typescript-eslint/typescript-estree`'s `parse()`
