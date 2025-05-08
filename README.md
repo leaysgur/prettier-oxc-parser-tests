@@ -5,17 +5,19 @@
 
 Prettier plugin for JS(X) and TS(X) files using `oxc-parser` with `experimentalRawTransfer` option. 🚀
 
+This plugin aims to be drop in replacement for:
+
+- JS(X): `babel` parser
+- TS(X): `typescript` parser
+
+## Usage
+
 ```sh
 # For JS(X)
 prettier --plugin=prettier-plugin-oxc --parser=oxc
 # For TS(X)
 prettier --plugin=prettier-plugin-oxc --parser=oxc-ts
 ```
-
-This plugin aims to be drop in replacement for:
-
-- JS(X): `babel` parser
-- TS(X): `typescript` parser
 
 ## TODO
 
@@ -31,6 +33,11 @@ This plugin aims to be drop in replacement for:
     - https://github.com/oxc-project/oxc/issues/10307
   - This is needed for both normal nodes and comments
     - Current `3930-kb.js` bench failing is due to luck of this for `BreakStatement`
+- Support deprecated TS-ESTree AST nodes?
+  - Prettier still depends on deprecated fields w/ `suppressDeprecatedPropertyWarnings`
+    - `TSEnumDeclaration.members`
+    - `TSMappedType.typeParameter`
+  - Current bench failings (other than `reading 'start'`) are because of this
 
 ## Debug
 
