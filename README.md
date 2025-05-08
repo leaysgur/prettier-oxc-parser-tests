@@ -1,6 +1,6 @@
 # prettier-plugin-oxc
 
-> [!WARNING]
+> [!IMPORTANT]
 >
 > - This is experimental plugin using experimental feature!
 
@@ -19,6 +19,11 @@ prettier --plugin=prettier-plugin-oxc --parser=oxc
 # For TS(X)
 prettier --plugin=prettier-plugin-oxc --parser=oxc-ts
 ```
+
+> [!NOTE]
+> The `oxc-parser` and the `typescript` parser used by Prettier (`@typescript-eslint/typescript-estree`) have different criteria for judging syntax errors and semantic errors.
+> Therefore, while they produce equivalent ASTs and the same formatting results for valid code without errors, this may not hold true for invalid cases.
+> The parser used by Prettier seems to be relatively tolerant of these errors, so there might be cases where `oxc-parser` cannot format properly.
 
 ## TODO
 
