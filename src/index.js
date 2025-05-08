@@ -40,6 +40,11 @@ function createParser(isJS) {
         //
         // For TS, it seems that ommiting parens is not a problem.
         preserveParens: isJS,
+        // NOTE: Do not check semantic errors like Prettier does.
+        // - JS: `babel` parser uses `errorRecovery` option
+        // - TS: `typescript` parser uses `@typescript-eslint/typescript-estree`'s `parse()`
+        // They do not throw semantic errors
+        showSemanticErrors: false,
         // @ts-expect-error: `experimentalRawTransfer` does not exist on `ParserOptions`
         experimentalRawTransfer: true,
       });
