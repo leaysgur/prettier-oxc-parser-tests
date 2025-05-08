@@ -6,7 +6,8 @@ import * as prettier from "prettier";
 const CODE = `
 // aooo
 let a,b=1,c=[2,3,,4,]
-`;
+`.trim();
+const IS_JS = false;
 
 // DEBUG: Inspect AST
 // import { parseSync } from "oxc-parser";
@@ -19,20 +20,23 @@ let a,b=1,c=[2,3,,4,]
 
 console.log("👻 Original:");
 console.log(CODE);
+console.log("==========================================");
 
+const theirsParser = IS_JS ? "babel" : "typescript";
 const theirs = await prettier.format(CODE, {
-  // parser: "babel-ts",
-  // parser: "oxc-ts",
-  parser: "babel",
+  parser: theirsParser,
   plugins: [],
 });
 
-console.log(`✨ Prettier@${prettier.version}+babel:`);
+console.log(`✨ Prettier@${prettier.version}+${theirsParser}:`);
 console.log(theirs);
+console.log("==========================================");
 
-console.log(`✨ Ours:`);
+const oursParser = IS_JS ? "oxc" : "oxc-ts";
 const ours = await prettier.format(CODE, {
-  parser: "oxc",
+  parser: oursParser,
   plugins: ["./src/index.js"],
 });
+console.log(`✨ Ours+${oursParser}:`);
 console.log(ours);
+console.log("==========================================");
