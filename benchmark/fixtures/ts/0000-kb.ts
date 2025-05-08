@@ -9,3 +9,5 @@ export function ok<T>(value: T): Result<T> {
 export function err<E = Error>(error: E): Result<never, E> {
   return { ok: false, error };
 }
+
+enum X { A, B, C }

@@ -1,144 +1,113 @@
-import React from 'react';
+"use client"
 
-interface ButtonProps {
-  primary?: boolean;
-  size?: 'small' | 'medium' | 'large';
-  label: string;
-  onClick?: () => void;
-  disabled?: boolean;
-  className?: string;
-  type?: 'button' | 'submit' | 'reset';
-  icon?: React.ReactNode;
-  iconPosition?: 'left' | 'right';
-  loading?: boolean;
-  loadingText?: string;
-  variant?: 'solid' | 'outline' | 'ghost';
-  color?: 'default' | 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'info';
-  fullWidth?: boolean;
-  rounded?: boolean;
+import type { Assign } from "@ark-ui/react"
+import { Tooltip as ArkTooltip } from "@ark-ui/react/tooltip"
+import {
+  type HTMLChakraProps,
+  type SlotRecipeProps,
+  type UnstyledProp,
+  createSlotRecipeContext,
+} from "../../styled-system"
+
+////////////////////////////////////////////////////////////////////////////////////
+
+const {
+  withRootProvider,
+  withContext,
+  useStyles: useTooltipStyles,
+  PropsProvider,
+} = createSlotRecipeContext({ key: "tooltip" })
+
+export { useTooltipStyles }
+
+////////////////////////////////////////////////////////////////////////////////////
+
+export interface TooltipRootProviderBaseProps
+  extends Assign<ArkTooltip.RootProviderBaseProps, SlotRecipeProps<"tooltip">>,
+    UnstyledProp {}
+
+export interface TooltipRootProviderProps extends TooltipRootProviderBaseProps {
+  children?: React.ReactNode
 }
 
-/**
- * Primary UI component for user interaction
- */
-export const Button = ({
-  primary = false,
-  size = 'medium',
-  label,
-  onClick,
-  disabled = false,
-  className = '',
-  type = 'button',
-  icon,
-  iconPosition = 'left',
-  loading = false,
-  loadingText,
-  variant = 'solid',
-  color = primary ? 'primary' : 'default',
-  fullWidth = false,
-  rounded = false,
-  ...props
-}: ButtonProps) => {
-  const baseClass = 'button';
-  const sizeClass = `${baseClass}--${size}`;
-  const variantClass = `${baseClass}--${variant}`;
-  const colorClass = `${baseClass}--${color}`;
-  const fullWidthClass = fullWidth ? `${baseClass}--full-width` : '';
-  const roundedClass = rounded ? `${baseClass}--rounded` : '';
-  const iconOnlyClass = !label && icon ? `${baseClass}--icon-only` : '';
-  
-  const buttonClasses = [
-    baseClass,
-    sizeClass,
-    variantClass,
-    colorClass,
-    fullWidthClass,
-    roundedClass,
-    iconOnlyClass,
-    className
-  ].filter(Boolean).join(' ');
+export const TooltipRootProvider = withRootProvider<TooltipRootProviderProps>(
+  ArkTooltip.RootProvider,
+)
 
-  return (
-    <button
-      type={type}
-      className={buttonClasses}
-      onClick={onClick}
-      disabled={disabled || loading}
-      {...props}
-    >
-      {loading ? (
-        <>
-          <span className="button__spinner"></span>
-          {loadingText || label}
-        </>
-      ) : (
-        <>
-          {icon && iconPosition === 'left' && (
-            <span className="button__icon button__icon--left">{icon}</span>
-          )}
-          {label && <span className="button__label">{label}</span>}
-          {icon && iconPosition === 'right' && (
-            <span className="button__icon button__icon--right">{icon}</span>
-          )}
-        </>
-      )}
-    </button>
-  );
-};
+////////////////////////////////////////////////////////////////////////////////////
 
-export default Button;
+export interface TooltipRootBaseProps
+  extends Assign<ArkTooltip.RootBaseProps, SlotRecipeProps<"tooltip">>,
+    UnstyledProp {}
 
-// Usage examples
-export const ButtonExamples = () => {
-  return (
-    <div className="button-examples">
-      <div className="button-row">
-        <Button label="Default Button" />
-        <Button primary label="Primary Button" />
-        <Button label="Disabled Button" disabled />
-      </div>
-      
-      <div className="button-row">
-        <Button size="small" label="Small Button" />
-        <Button size="medium" label="Medium Button" />
-        <Button size="large" label="Large Button" />
-      </div>
-      
-      <div className="button-row">
-        <Button variant="solid" label="Solid Button" />
-        <Button variant="outline" label="Outline Button" />
-        <Button variant="ghost" label="Ghost Button" />
-      </div>
-      
-      <div className="button-row">
-        <Button color="primary" label="Primary" />
-        <Button color="secondary" label="Secondary" />
-        <Button color="danger" label="Danger" />
-        <Button color="success" label="Success" />
-        <Button color="warning" label="Warning" />
-        <Button color="info" label="Info" />
-      </div>
-      
-      <div className="button-row">
-        <Button 
-          label="With Icon" 
-          icon={<span>🔍</span>} 
-          iconPosition="left" 
-        />
-        <Button 
-          label="Loading" 
-          loading 
-          loadingText="Loading..." 
-        />
-        <Button 
-          label="Full Width" 
-          fullWidth 
-        />
-        <Button 
-          label="Rounded" 
-          rounded 
-        />
-      </div>
-    </div>
-  );
-};
+export interface TooltipRootProps extends TooltipRootBaseProps {
+  children?: React.ReactNode
+}
+
+export const TooltipRoot = withRootProvider<TooltipRootProps>(ArkTooltip.Root, {
+  defaultProps: { lazyMount: true, unmountOnExit: true },
+})
+
+////////////////////////////////////////////////////////////////////////////////////
+
+export const TooltipPropsProvider =
+  PropsProvider as React.Provider<TooltipRootBaseProps>
+
+////////////////////////////////////////////////////////////////////////////////////
+
+export interface TooltipTriggerProps
+  extends HTMLChakraProps<"button", ArkTooltip.TriggerProps> {}
+
+export const TooltipTrigger = withContext<
+  HTMLButtonElement,
+  TooltipTriggerProps
+>(ArkTooltip.Trigger, "trigger", { forwardAsChild: true })
+
+////////////////////////////////////////////////////////////////////////////////////
+
+export interface TooltipPositionerProps
+  extends HTMLChakraProps<"div", ArkTooltip.PositionerProps> {}
+
+export const TooltipPositioner = withContext<
+  HTMLDivElement,
+  TooltipPositionerProps
+>(ArkTooltip.Positioner, "positioner", { forwardAsChild: true })
+
+////////////////////////////////////////////////////////////////////////////////////
+
+export interface TooltipContentProps
+  extends HTMLChakraProps<"section", ArkTooltip.ContentProps> {}
+
+export const TooltipContent = withContext<HTMLDivElement, TooltipContentProps>(
+  ArkTooltip.Content,
+  "content",
+  { forwardAsChild: true },
+)
+
+////////////////////////////////////////////////////////////////////////////////////
+
+export interface TooltipArrowTipProps
+  extends HTMLChakraProps<"div", ArkTooltip.ArrowTipProps> {}
+
+export const TooltipArrowTip = withContext<
+  HTMLDivElement,
+  TooltipArrowTipProps
+>(ArkTooltip.ArrowTip, "arrowTip", { forwardAsChild: true })
+
+////////////////////////////////////////////////////////////////////////////////////
+
+export interface TooltipArrowProps
+  extends HTMLChakraProps<"div", ArkTooltip.ArrowProps> {}
+
+export const TooltipArrow = withContext<HTMLDivElement, TooltipArrowProps>(
+  ArkTooltip.Arrow,
+  "arrow",
+  { forwardAsChild: true, defaultProps: { children: <TooltipArrowTip /> } },
+)
+
+////////////////////////////////////////////////////////////////////////////////////
+
+export const TooltipContext = ArkTooltip.Context
+
+export interface TooltipOpenChangeDetails
+  extends ArkTooltip.OpenChangeDetails {}

@@ -28,11 +28,10 @@ prettier --plugin=prettier-plugin-oxc --parser=oxc-ts
   - https://github.com/oxc-project/oxc/issues/9705
   - Then verify diffs
 - Support `SourceLocation`(`loc.start/end`)?
-  - This is not necessary if using Prettier@main, but not yet released
+  - This is needed for both normal nodes and comments
+  - This is unnecessary if using Prettier@main, but not yet released
   - OXC also plans to implement this, but not yet started
     - https://github.com/oxc-project/oxc/issues/10307
-  - This is needed for both normal nodes and comments
-    - Current `3930-kb.js` bench failing is due to luck of this for `BreakStatement`
 - Support deprecated TS-ESTree AST nodes?
   - Prettier still depends on deprecated fields w/ `suppressDeprecatedPropertyWarnings`
     - `TSEnumDeclaration.members`
@@ -80,235 +79,215 @@ node --expose-gc benchmark/run.js
 
 ### JS(X)
 #### 0000-kb.js
-clk: ~3.81 GHz
+clk: ~3.69 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
 | benchmark |              avg |         min |         p75 |         p99 |         max |
 | ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `101.33 µs/iter` | ` 77.54 µs` | ` 97.25 µs` | `520.42 µs` | `  1.53 ms` |
-| babel | `102.08 µs/iter` | ` 81.13 µs` | ` 97.33 µs` | `483.21 µs` | `  1.55 ms` |
+| oxc   | `109.63 µs/iter` | ` 84.96 µs` | `100.63 µs` | `604.50 µs` | `  1.93 ms` |
+| babel | `104.50 µs/iter` | ` 87.79 µs` | ` 99.83 µs` | `482.83 µs` | `  1.53 ms` |
 
 #### 0001-kb.js
-clk: ~3.79 GHz
+clk: ~3.60 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
 | benchmark |              avg |         min |         p75 |         p99 |         max |
 | ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `640.78 µs/iter` | `530.88 µs` | `637.21 µs` | `  1.42 ms` | `  2.41 ms` |
-| babel | `762.37 µs/iter` | `623.38 µs` | `789.67 µs` | `  1.48 ms` | `  2.45 ms` |
+| oxc   | `643.61 µs/iter` | `536.75 µs` | `645.00 µs` | `  1.44 ms` | `  2.51 ms` |
+| babel | `780.05 µs/iter` | `630.33 µs` | `803.21 µs` | `  1.55 ms` | `  2.60 ms` |
 
 #### 0003-kb.jsx
-clk: ~2.00 GHz
-cpu: Apple M3
-runtime: node 22.14.0 (arm64-darwin)
-
-| benchmark |              avg |         min |         p75 |         p99 |         max |
-| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `  1.19 ms/iter` | `  1.02 ms` | `  1.24 ms` | `  2.17 ms` | `  3.34 ms` |
-| babel | `  1.49 ms/iter` | `  1.24 ms` | `  1.61 ms` | `  2.50 ms` | `  3.27 ms` |
-
-#### 0005-kb.js
-clk: ~3.56 GHz
-cpu: Apple M3
-runtime: node 22.14.0 (arm64-darwin)
-
-| benchmark |              avg |         min |         p75 |         p99 |         max |
-| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `  1.13 ms/iter` | `973.58 µs` | `  1.15 ms` | `  2.21 ms` | `  3.06 ms` |
-| babel | `  1.53 ms/iter` | `  1.26 ms` | `  1.59 ms` | `  3.18 ms` | `  3.67 ms` |
-
-#### 0006-kb.jsx
-clk: ~3.55 GHz
-cpu: Apple M3
-runtime: node 22.14.0 (arm64-darwin)
-
-| benchmark |              avg |         min |         p75 |         p99 |         max |
-| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `  1.71 ms/iter` | `  1.46 ms` | `  1.81 ms` | `  3.14 ms` | `  4.08 ms` |
-| babel | `  2.10 ms/iter` | `  1.75 ms` | `  2.29 ms` | `  3.47 ms` | `  4.21 ms` |
-
-#### 0010-kb.js
-clk: ~3.55 GHz
-cpu: Apple M3
-runtime: node 22.14.0 (arm64-darwin)
-
-| benchmark |              avg |         min |         p75 |         p99 |         max |
-| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `  2.53 ms/iter` | `  2.19 ms` | `  2.62 ms` | `  4.42 ms` | `  5.46 ms` |
-| babel | `  3.27 ms/iter` | `  2.74 ms` | `  3.49 ms` | `  5.15 ms` | `  5.45 ms` |
-
-#### 0028-kb.js
-clk: ~3.55 GHz
-cpu: Apple M3
-runtime: node 22.14.0 (arm64-darwin)
-
-| benchmark |              avg |         min |         p75 |         p99 |         max |
-| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `  7.34 ms/iter` | `  6.44 ms` | `  7.45 ms` | `  9.80 ms` | ` 10.89 ms` |
-| babel | `  9.27 ms/iter` | `  8.22 ms` | `  9.26 ms` | ` 13.26 ms` | ` 13.51 ms` |
-
-#### 0080-kb.mjs
-clk: ~3.54 GHz
-cpu: Apple M3
-runtime: node 22.14.0 (arm64-darwin)
-
-| benchmark |              avg |         min |         p75 |         p99 |         max |
-| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | ` 51.36 ms/iter` | ` 48.41 ms` | ` 51.55 ms` | ` 55.20 ms` | ` 58.86 ms` |
-| babel | ` 73.72 ms/iter` | ` 63.42 ms` | ` 75.84 ms` | ` 91.64 ms` | `119.57 ms` |
-
-#### 0143-kb.js
-clk: ~3.54 GHz
-cpu: Apple M3
-runtime: node 22.14.0 (arm64-darwin)
-
-| benchmark |              avg |         min |         p75 |         p99 |         max |
-| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | ` 46.71 ms/iter` | ` 43.13 ms` | ` 47.87 ms` | ` 50.31 ms` | ` 58.86 ms` |
-| babel | ` 67.08 ms/iter` | ` 55.86 ms` | ` 63.80 ms` | ` 85.75 ms` | `105.15 ms` |
-
-#### 0554-kb.js
-clk: ~3.59 GHz
-cpu: Apple M3
-runtime: node 22.14.0 (arm64-darwin)
-
-| benchmark |              avg |         min |         p75 |         p99 |         max |
-| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | `187.73 ms/iter` | `174.87 ms` | `183.88 ms` | `189.35 ms` | `250.82 ms` |
-| babel | `348.92 ms/iter` | `318.73 ms` | `352.62 ms` | `376.93 ms` | `464.34 ms` |
-
-#### 3930-kb.js
-clk: ~3.55 GHz
-cpu: Apple M3
-runtime: node 22.14.0 (arm64-darwin)
-
-| benchmark |              avg |         min |         p75 |         p99 |         max |
-| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc   | error: Cannot read properties of undefined (reading 'start') |
-| babel | `   3.58 s/iter` | `   3.47 s` | `   3.60 s` | `   3.70 s` | `   3.87 s` |
-
-
-### TS(X)
-#### 0000-kb.ts
-clk: ~3.55 GHz
-cpu: Apple M3
-runtime: node 22.14.0 (arm64-darwin)
-
-| benchmark  |              avg |         min |         p75 |         p99 |         max |
-| ---------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc-ts     | `243.74 µs/iter` | `204.75 µs` | `233.58 µs` | `665.79 µs` | `  1.89 ms` |
-| typescript | `453.95 µs/iter` | `351.04 µs` | `426.29 µs` | `  1.45 ms` | `  2.93 ms` |
-
-#### 0000-kb.tsx
-clk: ~3.54 GHz
-cpu: Apple M3
-runtime: node 22.14.0 (arm64-darwin)
-
-| benchmark  |              avg |         min |         p75 |         p99 |         max |
-| ---------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc-ts     | `184.49 µs/iter` | `152.17 µs` | `179.33 µs` | `614.88 µs` | `  2.17 ms` |
-| typescript | `333.43 µs/iter` | `247.88 µs` | `325.92 µs` | `  1.27 ms` | `  2.61 ms` |
-
-#### 0002-kb.ts
-clk: ~3.54 GHz
-cpu: Apple M3
-runtime: node 22.14.0 (arm64-darwin)
-
-| benchmark  |              avg |         min |         p75 |         p99 |         max |
-| ---------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc-ts     | `878.14 µs/iter` | `754.79 µs` | `868.88 µs` | `  1.92 ms` | `  3.08 ms` |
-| typescript | `  1.75 ms/iter` | `  1.33 ms` | `  1.90 ms` | `  4.31 ms` | `  4.80 ms` |
-
-#### 0003-kb.tsx
-clk: ~3.54 GHz
-cpu: Apple M3
-runtime: node 22.14.0 (arm64-darwin)
-
-| benchmark  |              avg |         min |         p75 |         p99 |         max |
-| ---------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc-ts     | `  1.13 ms/iter` | `991.67 µs` | `  1.14 ms` | `  2.07 ms` | `  3.54 ms` |
-| typescript | `  2.32 ms/iter` | `  1.85 ms` | `  2.56 ms` | `  4.95 ms` | `  5.18 ms` |
-
-#### 0004-kb.ts
 clk: ~3.53 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
-| benchmark  |              avg |         min |         p75 |         p99 |         max |
-| ---------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc-ts     | `  1.44 ms/iter` | `  1.27 ms` | `  1.50 ms` | `  2.32 ms` | `  3.44 ms` |
-| typescript | `  3.82 ms/iter` | `  2.94 ms` | `  4.09 ms` | `  7.04 ms` | `  7.24 ms` |
+| benchmark |              avg |         min |         p75 |         p99 |         max |
+| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
+| oxc   | `  1.20 ms/iter` | `  1.02 ms` | `  1.26 ms` | `  2.38 ms` | `  4.01 ms` |
+| babel | `  1.57 ms/iter` | `  1.28 ms` | `  1.71 ms` | `  2.81 ms` | `  3.80 ms` |
 
-#### 0007-kb.ts
-clk: ~3.55 GHz
+#### 0005-kb.js
+clk: ~3.53 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
-| benchmark  |              avg |         min |         p75 |         p99 |         max |
-| ---------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc-ts     | error: Unexpected token. Did you mean `{'>'}` or `&gt;`? |
-| typescript | `  5.44 ms/iter` | `  4.36 ms` | `  5.77 ms` | `  9.57 ms` | ` 10.21 ms` |
+| benchmark |              avg |         min |         p75 |         p99 |         max |
+| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
+| oxc   | `  1.14 ms/iter` | `982.21 µs` | `  1.16 ms` | `  2.23 ms` | `  2.88 ms` |
+| babel | `  1.54 ms/iter` | `  1.27 ms` | `  1.61 ms` | `  2.64 ms` | `  3.78 ms` |
 
-#### 0008-kb.tsx
-clk: ~3.51 GHz
+#### 0006-kb.jsx
+clk: ~3.52 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
-| benchmark  |              avg |         min |         p75 |         p99 |         max |
-| ---------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc-ts     | `  2.95 ms/iter` | `  2.49 ms` | `  3.06 ms` | `  5.30 ms` | `  6.10 ms` |
-| typescript | `  5.76 ms/iter` | `  4.51 ms` | `  6.30 ms` | `  9.22 ms` | `  9.46 ms` |
+| benchmark |              avg |         min |         p75 |         p99 |         max |
+| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
+| oxc   | `  1.79 ms/iter` | `  1.50 ms` | `  1.85 ms` | `  4.36 ms` | `  5.15 ms` |
+| babel | `  2.20 ms/iter` | `  1.78 ms` | `  2.39 ms` | `  3.95 ms` | `  4.33 ms` |
 
-#### 0012-kb.tsx
-clk: ~3.55 GHz
+#### 0010-kb.js
+clk: ~3.53 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
-| benchmark  |              avg |         min |         p75 |         p99 |         max |
-| ---------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc-ts     | error: Cannot read properties of undefined (reading 'range') |
-| typescript | `  8.70 ms/iter` | `  7.14 ms` | `  9.21 ms` | ` 13.36 ms` | ` 14.39 ms` |
+| benchmark |              avg |         min |         p75 |         p99 |         max |
+| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
+| oxc   | `  2.58 ms/iter` | `  2.22 ms` | `  2.66 ms` | `  4.45 ms` | `  5.49 ms` |
+| babel | `  3.43 ms/iter` | `  2.77 ms` | `  3.64 ms` | `  6.17 ms` | `  6.74 ms` |
 
-#### 0023-kb.ts
-clk: ~3.55 GHz
+#### 0028-kb.js
+clk: ~1.85 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
-| benchmark  |              avg |         min |         p75 |         p99 |         max |
-| ---------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc-ts     | `  7.29 ms/iter` | `  6.29 ms` | `  7.40 ms` | ` 11.58 ms` | ` 12.27 ms` |
-| typescript | ` 19.39 ms/iter` | ` 16.13 ms` | ` 21.61 ms` | ` 23.73 ms` | ` 27.88 ms` |
+| benchmark |              avg |         min |         p75 |         p99 |         max |
+| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
+| oxc   | `  7.62 ms/iter` | `  6.55 ms` | `  7.96 ms` | ` 10.54 ms` | ` 10.93 ms` |
+| babel | `  9.50 ms/iter` | `  8.31 ms` | `  9.65 ms` | ` 12.91 ms` | ` 13.21 ms` |
 
-#### 0040-kb.ts
-clk: ~3.55 GHz
+#### 0080-kb.mjs
+clk: ~3.53 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
-| benchmark  |              avg |         min |         p75 |         p99 |         max |
-| ---------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc-ts     | error: Cannot read properties of undefined (reading 'range') |
-| typescript | ` 34.54 ms/iter` | ` 28.77 ms` | ` 36.22 ms` | ` 45.72 ms` | ` 48.64 ms` |
+| benchmark |              avg |         min |         p75 |         p99 |         max |
+| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
+| oxc   | ` 51.89 ms/iter` | ` 48.90 ms` | ` 54.41 ms` | ` 55.17 ms` | ` 57.17 ms` |
+| babel | ` 78.15 ms/iter` | ` 64.34 ms` | ` 80.61 ms` | ` 89.66 ms` | `127.18 ms` |
 
-#### 1056-kb.tsx
-clk: ~3.55 GHz
+#### 0143-kb.js
+clk: ~3.52 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
-| benchmark  |              avg |         min |         p75 |         p99 |         max |
-| ---------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| oxc-ts     | error: Cannot read properties of undefined (reading 'start') |
-| typescript | `566.98 ms/iter` | `525.81 ms` | `571.64 ms` | `590.43 ms` | `708.85 ms` |
+| benchmark |              avg |         min |         p75 |         p99 |         max |
+| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
+| oxc   | ` 46.83 ms/iter` | ` 42.52 ms` | ` 47.40 ms` | ` 49.70 ms` | ` 59.67 ms` |
+| babel | ` 69.22 ms/iter` | ` 59.65 ms` | ` 67.08 ms` | ` 83.29 ms` | `107.63 ms` |
 
-#### 2922-kb.ts
-clk: ~3.55 GHz
+#### 0554-kb.js
+clk: ~3.52 GHz
+cpu: Apple M3
+runtime: node 22.14.0 (arm64-darwin)
+
+| benchmark |              avg |         min |         p75 |         p99 |         max |
+| ----- | ---------------- | ----------- | ----------- | ----------- | ----------- |
+| oxc   | `190.09 ms/iter` | `175.84 ms` | `190.27 ms` | `191.23 ms` | `260.17 ms` |
+| babel | `358.18 ms/iter` | `323.59 ms` | `356.18 ms` | `423.12 ms` | `459.41 ms` |
+
+
+### TS(X)
+#### 0000-kb.ts
+clk: ~3.52 GHz
 cpu: Apple M3
 runtime: node 22.14.0 (arm64-darwin)
 
 | benchmark  |              avg |         min |         p75 |         p99 |         max |
 | ---------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
 | oxc-ts     | error: Cannot read properties of undefined (reading 'length') |
-| typescript | `   1.22 s/iter` | `   1.17 s` | `   1.22 s` | `   1.30 s` | `   1.30 s` |
+| typescript | `502.28 µs/iter` | `380.46 µs` | `480.58 µs` | `  1.50 ms` | `  3.37 ms` |
+
+#### 0001-kb.tsx
+clk: ~3.53 GHz
+cpu: Apple M3
+runtime: node 22.14.0 (arm64-darwin)
+
+| benchmark  |              avg |         min |         p75 |         p99 |         max |
+| ---------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
+| oxc-ts     | `466.46 µs/iter` | `377.21 µs` | `464.08 µs` | `  1.07 ms` | `  2.69 ms` |
+| typescript | `888.53 µs/iter` | `700.33 µs` | `894.33 µs` | `  2.21 ms` | `  3.65 ms` |
+
+#### 0003-kb.tsx
+clk: ~3.53 GHz
+cpu: Apple M3
+runtime: node 22.14.0 (arm64-darwin)
+
+| benchmark  |              avg |         min |         p75 |         p99 |         max |
+| ---------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
+| oxc-ts     | `810.00 µs/iter` | `707.25 µs` | `795.21 µs` | `  1.59 ms` | `  2.30 ms` |
+| typescript | `  1.53 ms/iter` | `  1.24 ms` | `  1.61 ms` | `  3.14 ms` | `  4.32 ms` |
+
+#### 0007-kb.ts
+clk: ~3.53 GHz
+cpu: Apple M3
+runtime: node 22.14.0 (arm64-darwin)
+
+| benchmark  |              avg |         min |         p75 |         p99 |         max |
+| ---------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
+| oxc-ts     | error: Unexpected token. Did you mean `{'>'}` or `&gt;`? |
+| typescript | `  5.38 ms/iter` | `  4.40 ms` | `  5.62 ms` | `  8.73 ms` | `  9.57 ms` |
+
+#### 0008-kb.tsx
+clk: ~3.53 GHz
+cpu: Apple M3
+runtime: node 22.14.0 (arm64-darwin)
+
+| benchmark  |              avg |         min |         p75 |         p99 |         max |
+| ---------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
+| oxc-ts     | `  2.99 ms/iter` | `  2.53 ms` | `  3.12 ms` | `  5.29 ms` | `  6.19 ms` |
+| typescript | `  5.77 ms/iter` | `  4.63 ms` | `  6.07 ms` | `  9.07 ms` | ` 11.56 ms` |
+
+#### 0015-kb.tsx
+clk: ~3.53 GHz
+cpu: Apple M3
+runtime: node 22.14.0 (arm64-darwin)
+
+| benchmark  |              avg |         min |         p75 |         p99 |         max |
+| ---------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
+| oxc-ts     | `  4.16 ms/iter` | `  3.53 ms` | `  4.32 ms` | `  6.91 ms` | `  8.04 ms` |
+| typescript | `  7.16 ms/iter` | `  6.07 ms` | `  7.45 ms` | ` 10.47 ms` | ` 12.20 ms` |
+
+#### 0021-kb.tsx
+clk: ~3.53 GHz
+cpu: Apple M3
+runtime: node 22.14.0 (arm64-darwin)
+
+| benchmark  |              avg |         min |         p75 |         p99 |         max |
+| ---------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
+| oxc-ts     | `  4.31 ms/iter` | `  3.66 ms` | `  4.39 ms` | `  6.56 ms` | `  8.87 ms` |
+| typescript | `  8.89 ms/iter` | `  7.15 ms` | `  9.62 ms` | ` 14.00 ms` | ` 14.10 ms` |
+
+#### 0022-kb.tsx
+clk: ~3.53 GHz
+cpu: Apple M3
+runtime: node 22.14.0 (arm64-darwin)
+
+| benchmark  |              avg |         min |         p75 |         p99 |         max |
+| ---------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
+| oxc-ts     | error: Cannot read properties of undefined (reading 'start') |
+| typescript | ` 13.43 ms/iter` | ` 11.38 ms` | ` 14.15 ms` | ` 17.67 ms` | ` 17.94 ms` |
+
+#### 0040-kb.ts
+clk: ~3.53 GHz
+cpu: Apple M3
+runtime: node 22.14.0 (arm64-darwin)
+
+| benchmark  |              avg |         min |         p75 |         p99 |         max |
+| ---------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
+| oxc-ts     | error: Cannot read properties of undefined (reading 'range') |
+| typescript | ` 33.99 ms/iter` | ` 29.68 ms` | ` 35.50 ms` | ` 41.00 ms` | ` 44.75 ms` |
+
+#### 0050-kb.ts
+clk: ~3.52 GHz
+cpu: Apple M3
+runtime: node 22.14.0 (arm64-darwin)
+
+| benchmark  |              avg |         min |         p75 |         p99 |         max |
+| ---------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
+| oxc-ts     | error: Cannot read properties of undefined (reading 'length') |
+| typescript | ` 27.89 ms/iter` | ` 23.53 ms` | ` 30.55 ms` | ` 34.12 ms` | ` 40.51 ms` |
+
+#### 2922-kb.ts
+clk: ~3.53 GHz
+cpu: Apple M3
+runtime: node 22.14.0 (arm64-darwin)
+
+| benchmark  |              avg |         min |         p75 |         p99 |         max |
+| ---------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
+| oxc-ts     | error: Cannot read properties of undefined (reading 'length') |
+| typescript | `   1.25 s/iter` | `   1.17 s` | `   1.29 s` | `   1.35 s` | `   1.36 s` |
 
 
