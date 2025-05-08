@@ -119,7 +119,10 @@ for (const [PRETTIER_DIR, ext, theirsParser, testParser, oursParser] of [
   };
 }
 
+console.log("## Coverage report");
 console.log(`- OXC version:`, "`" + pkg.dependencies["oxc-parser"] + "`");
 console.log("- Prettier version:", "`" + pkg.devDependencies.prettier + "`");
 console.log("");
+console.log("```");
 console.table(stats);
+console.log("```");
