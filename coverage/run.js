@@ -9,11 +9,11 @@ const PRETTIER_FORMAT_TESTS_DIR = resolve("../prettier/tests/format");
 const DIFF_SNAPSHOTS_DIR = resolve("./coverage/snapshots");
 
 const stats = {};
-for (const [PRETTIER_DIR, ext, theirsParser, testParser, oursParser] of [
-  ["js", "js", "babel", "acorn", "oxc"],
-  ["jsx", "jsx", "babel", "acorn", "oxc"],
-  ["typescript", "ts", "typescript", "typescript", "oxc-ts"],
-  ["jsx", "tsx", "typescript", "typescript", "oxc-ts"],
+for (const [PRETTIER_DIR, ext, parser, testParser] of [
+  ["js", "js", "babel", "acorn"],
+  ["jsx", "jsx", "babel", "acorn"],
+  ["typescript", "ts", "typescript", "typescript"],
+  ["jsx", "tsx", "typescript", "typescript"],
 ]) {
   await rm([DIFF_SNAPSHOTS_DIR, ext].join("/"), {
     recursive: true,
@@ -41,7 +41,7 @@ for (const [PRETTIER_DIR, ext, theirsParser, testParser, oursParser] of [
 
     try {
       results.theirs = await prettier.format(code, {
-        parser: theirsParser,
+        parser,
         plugins: [],
       });
     } catch {
@@ -60,7 +60,7 @@ for (const [PRETTIER_DIR, ext, theirsParser, testParser, oursParser] of [
 
     try {
       results.ours = await prettier.format(code, {
-        parser: oursParser,
+        parser,
         plugins: ["./src/index.js"],
       });
     } catch (err) {

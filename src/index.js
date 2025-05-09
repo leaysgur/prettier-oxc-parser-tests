@@ -2,22 +2,9 @@
 import { parseSync } from "oxc-parser";
 import { addCommentLocation } from "./transform.js";
 
-export const languages = [
-  {
-    name: "oxc",
-    parsers: ["oxc"],
-    extensions: [".js", ".jsx", ".mjs", ".cjs"],
-  },
-  {
-    name: "oxc-ts",
-    parsers: ["oxc-ts"],
-    extensions: [".ts", ".tsx", ".mts", ".cts"],
-  },
-];
-
 export const parsers = {
-  ["oxc"]: createParser(true),
-  ["oxc-ts"]: createParser(false),
+  babel: createParser(true),
+  typescript: createParser(false),
 };
 
 /** @param {boolean} preserveParens */
