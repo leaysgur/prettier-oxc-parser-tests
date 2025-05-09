@@ -11,15 +11,6 @@ This plugin aims to be drop in replacement for:
 - JS(X): `babel` parser
 - TS(X): `typescript` parser
 
-## Usage
-
-```sh
-# For JS(X)
-prettier --plugin=prettier-plugin-oxc --parser=oxc
-# For TS(X)
-prettier --plugin=prettier-plugin-oxc --parser=oxc-ts
-```
-
 > [!NOTE]
 > The `oxc-parser` and the `typescript` parser used by Prettier (`@typescript-eslint/typescript-estree`) have different criteria for judging syntax errors and semantic errors.
 > Therefore, while they produce equivalent ASTs and the same formatting results for valid code without errors, this may not hold true for invalid cases.
@@ -43,14 +34,15 @@ prettier --plugin=prettier-plugin-oxc --parser=oxc-ts
     - `TSEnumDeclaration.members`
     - `TSMappedType.typeParameter`
   - Current bench failings (other than `reading 'start'`) are because of this
+  - Fixing this in Prettier is desirable, but it is relatively hard until Babel@8 is released and used
 
 ## Debug
 
 ```sh
 node debug.js
 
-./node_modules/bin/prettier --plugin=prettier-plugin-oxc --parser=oxc debug.js
-./node_modules/bin/prettier --plugin=prettier-plugin-oxc --parser=oxc ./benchmark/fixtures/0028-kb.js
+./node_modules/bin/prettier --plugin=prettier-plugin-oxc debug.js
+./node_modules/bin/prettier --plugin=prettier-plugin-oxc ./benchmark/fixtures/ts/2922-kb.ts
 ```
 
 ## Coverage
