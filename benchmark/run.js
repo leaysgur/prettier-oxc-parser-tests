@@ -20,7 +20,7 @@ for (const file of await readdir(JS_FIXTURES_DIR)) {
     const parser = state.get("parser");
 
     const options = {
-      parser,
+      parser: "babel",
       plugins: parser.startsWith("oxc") ? ["./src/index.js"] : [],
     };
 
@@ -42,7 +42,7 @@ for (const file of await readdir(TS_FIXTURES_DIR)) {
     const parser = state.get("parser");
 
     const options = {
-      parser,
+      parser: "typescript",
       plugins: parser.startsWith("oxc") ? ["./src/index.js"] : [],
     };
 
