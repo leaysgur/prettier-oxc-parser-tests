@@ -13,6 +13,6 @@
     "tinyglobby": "^0.2.13"
   },
   "dependencies": {
-    "prettier-oxc-parser": "^0.1.0"
+    "prettier-oxc-parser": "0.1.0"
   }
 }

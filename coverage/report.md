@@ -1,5 +1,5 @@
 ## Coverage report
-- OXC version: `undefined`
+- OXC version: `0.1.0`
 - Prettier version: `3.5.3`
 
 ```

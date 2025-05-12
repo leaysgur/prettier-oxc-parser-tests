@@ -7,7 +7,7 @@ const JS_FIXTURES_DIR = "./benchmark/fixtures/js";
 const TS_FIXTURES_DIR = "./benchmark/fixtures/ts";
 
 console.log("## Benchmark report");
-console.log("- OXC version:", "`" + pkg.dependencies["oxc-parser"] + "`");
+console.log("- Plugin version:", "`" + pkg.dependencies["prettier-oxc-parser"] + "`");
 console.log("- Prettier version:", "`" + pkg.devDependencies.prettier + "`");
 console.log("");
 
