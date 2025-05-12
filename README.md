@@ -9,7 +9,6 @@ This repo just exists to test this plugin in separate repo.
 ## Coverage
 
 ```sh
-# Clone prettier repo next to this repo, then
 node coverage/run.js > coverage/report.md
 ```
 
