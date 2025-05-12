@@ -66,9 +66,8 @@ for (const [PRETTIER_DIR, ext, parser, testParser] of [
         plugins: ["prettier-oxc-parser"],
       });
     } catch (err) {
-      // TODO: This should be fixed, since tester passed
-      // console.log(absPath);
-      // console.log(err);
+      // NOTE: This may be need to fixed, since tester passed
+      // But in some cases, tester parser is too loose
       counter.oursFailed++;
       continue;
     }
