@@ -1,6 +1,0 @@
-===================================================================
---- theirs.js
-+++ ours.js
-@@ -1,1 +1,1 @@
--export default (function () {}.toString());
-+export default (function () {}).toString();

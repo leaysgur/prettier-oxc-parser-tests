@@ -1,108 +1,120 @@
 ===================================================================
 --- theirs.js
 +++ ours.js
-@@ -1,77 +1,77 @@
- !(
--  (
--    x || // foo
-+  x || // foo
-     y || // bar
--    z
--  ) /*
-+    z /*
-    * comment
+@@ -8,29 +8,37 @@
     */
  );
  
  !(
-   cond1 || // foo
+-  cond1 || // foo
 -  cond2 || // bar
 -  cond3 // baz
++  (
++    cond1 || // foo
 +    cond2 || // bar
-+    cond3 // baz
++    cond3
++  ) // baz
  );
  
  !(
-   (a && // alpha
-     b) || // bravo
+-  (a && // alpha
+-    b) || // bravo
 -  c // charlie
-+    c // charlie
++  (
++    (a && // alpha
++      b) || // bravo
++    c
++  ) // charlie
  );
  
  !(
-   x || // foo
+-  x || // foo
 -  (y && z) // bar
-+    (y && z) // bar
++  (
++    x || // foo
++    (y && z)
++  ) // bar
  );
  
  !(
-   a || // first condition
+-  a || // first condition
 -  b ||
 -  c || // second condition
 -  d // third condition
-+    (b || c) || // second condition
-+    d // third condition
++  (
++    a || // first condition
++    b ||
++    c || // second condition
++    d
++  ) // third condition
  );
  
  void (
--  (
--    (p && // first
--      q) || // second
-+  (p && // first
-+    q) || // second
-     (r && // third
--      s)
--  ) // fourth
-+      s) // fourth
+   (
+@@ -41,37 +49,49 @@
+   ) // fourth
  );
  
  void (
-   cond1 || // foo
+-  cond1 || // foo
 -  (cond2 && // bar
 -    cond3) || // baz
 -  cond4 // qux
++  (
++    cond1 || // foo
 +    (cond2 && // bar
 +      cond3) || // baz
-+    cond4 // qux
++    cond4
++  ) // qux
  );
  
  !(
-   (cond1 && cond2) || // multi-cond1
+-  (cond1 && cond2) || // multi-cond1
 -  cond3 ||
 -  cond4 // multi-cond2
-+    (cond3 || cond4) // multi-cond2
++  (
++    (cond1 && cond2) || // multi-cond1
++    cond3 ||
++    cond4
++  ) // multi-cond2
  );
  
  !(
-   ((cond1 || cond2) && // complex-cond1
-     (cond3 || cond4)) || // complex-cond2
+-  ((cond1 || cond2) && // complex-cond1
+-    (cond3 || cond4)) || // complex-cond2
 -  cond5 // complex-cond3
-+    cond5 // complex-cond3
++  (
++    ((cond1 || cond2) && // complex-cond1
++      (cond3 || cond4)) || // complex-cond2
++    cond5
++  ) // complex-cond3
  );
  
  void (
-   ((condA || condB) && // test A
-     (condC || condD)) || // test B
+-  ((condA || condB) && // test A
+-    (condC || condD)) || // test B
 -  condE // test C
-+    condE // test C
++  (
++    ((condA || condB) && // test A
++      (condC || condD)) || // test B
++    condE
++  ) // test C
  );
  
  void (
 -  (x || y) && // nested
 -  (z || w) // comment for w
-+  (x || y) &&
-+    (
-+      // nested
-+      z || w
-+    ) // comment for w
++  (
++    (x || y) && // nested
++    (z || w)
++  ) // comment for w
  );
  
  !(
 -  a && // begin nested
 -  (b || c) // end nested
-+  a &&
-+    (
-+      // begin nested
-+      b || c
-+    ) // end nested
++  (
++    a && // begin nested
++    (b || c)
++  ) // end nested
  );

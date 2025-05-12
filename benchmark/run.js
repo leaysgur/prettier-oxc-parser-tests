@@ -20,8 +20,9 @@ for (const file of await readdir(JS_FIXTURES_DIR)) {
     const parser = state.get("parser");
 
     const options = {
+      filepath: file,
       parser: "babel",
-      plugins: parser.startsWith("oxc") ? ["./src/index.js"] : [],
+      plugins: parser.startsWith("oxc") ? ["prettier-oxc-parser"] : [],
     };
 
     yield async () => await prettier.format(CODE, options);
@@ -42,8 +43,9 @@ for (const file of await readdir(TS_FIXTURES_DIR)) {
     const parser = state.get("parser");
 
     const options = {
+      filepath: file,
       parser: "typescript",
-      plugins: parser.startsWith("oxc") ? ["./src/index.js"] : [],
+      plugins: parser.startsWith("oxc") ? ["prettier-oxc-parser"] : [],
     };
 
     yield async () => await prettier.format(CODE, options);

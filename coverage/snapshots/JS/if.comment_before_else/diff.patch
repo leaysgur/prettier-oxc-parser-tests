@@ -1,0 +1,14 @@
+===================================================================
+--- theirs.js
++++ ours.js
+@@ -7,7 +7,8 @@
+ else {
+   stuff;
+ }
+ 
+-if (cond) stuff;
+-// comment
++if (cond)
++  stuff;
++  // comment
+ else stuff;

@@ -41,6 +41,7 @@ for (const [PRETTIER_DIR, ext, parser, testParser] of [
 
     try {
       results.theirs = await prettier.format(code, {
+        filepath: testAbsPath,
         parser,
         plugins: [],
       });
@@ -60,8 +61,9 @@ for (const [PRETTIER_DIR, ext, parser, testParser] of [
 
     try {
       results.ours = await prettier.format(code, {
+        filepath: testAbsPath,
         parser,
-        plugins: ["./src/index.js"],
+        plugins: ["prettier-oxc-parser"],
       });
     } catch (err) {
       // TODO: This should be fixed, since tester passed

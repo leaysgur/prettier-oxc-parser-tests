@@ -1,0 +1,66 @@
+===================================================================
+--- theirs.js
++++ ours.js
+@@ -2,16 +2,17 @@
+   // comment
+   false;
+ }
+ // comment
+-else if (2) true;
+-// multi
+-// ple
+-// lines
++else if (2)
++  true;
++  // multi
++  // ple
++  // lines
+ else if (3)
+   // existing comment
+   true;
+-// okay?
++  // okay?
+ else if (4) {
+   // empty with existing comment
+ }
+ // comment
+@@ -26,10 +27,9 @@
+   // comment
+   true;
+ } else if (7)
+   // comment
+-  true;
+-// comment
++  true; // comment
+ else {
+   true;
+ }
+ 
+@@ -39,11 +39,10 @@
+   true;
+ } else if (9)
+   // comment
+   // comment
+-  true;
+-// comment
+-// comment
++  true; // comment
++  // comment
+ else {
+   true;
+ }
+ 
+@@ -55,11 +54,11 @@
+   // comment /* comment */ // comment
+   true;
+ else if (13)
+   /* comment */ /* comment */ // comment
++  true; /* comment */
++else {
+   true;
+-/* comment */ else {
+-  true;
+ }
+ 
+ if (14) {
+   // comment

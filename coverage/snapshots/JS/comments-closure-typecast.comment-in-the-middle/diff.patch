@@ -7,5 +7,5 @@
     */
    //2
 -  (window["s"]).toString();
-+  ((window["s"])).toString();
++  window["s"].toString();
  console.log(a.foo());
