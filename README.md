@@ -1,48 +1,16 @@
-# prettier-plugin-oxc
+# prettier-oxc-parser-tests
 
-> [!IMPORTANT]
->
-> - This is experimental plugin using experimental feature!
+https://github.com/ArnaudBarre/prettier-oxc-parser
 
-Prettier plugin for JS(X) and TS(X) files using `oxc-parser` with `experimentalRawTransfer` option. 🚀
-
-This plugin aims to be drop in replacement for:
-
-- JS(X): `babel` parser
-- TS(X): `typescript` parser
-
-> [!NOTE]
-> The `oxc-parser` and the `typescript` parser used by Prettier (`@typescript-eslint/typescript-estree`) have different criteria for judging syntax errors and semantic errors.
-> Therefore, while they produce equivalent ASTs and the same formatting results for valid code without errors, this may not hold true for invalid cases.
-> The parser used by Prettier seems to be relatively tolerant of these errors, so there might be cases where `oxc-parser` cannot format properly.
-
-## TODO
-
-- Postprocess AST
-  - JS: Remove useless extra parens
-  - JS/TS: rebalance logical exprs, etc...
-- Wait or improve TS-ESLint alignment
-  - https://github.com/oxc-project/oxc/issues/9705
-  - Then verify diffs
-- Support `SourceLocation`(`loc.start/end`)?
-  - This is needed for both normal nodes and comments
-  - This is unnecessary if using Prettier@main, but not yet released
-  - OXC also plans to implement this, but not yet started
-    - https://github.com/oxc-project/oxc/issues/10307
-- Support deprecated TS-ESTree AST nodes?
-  - Prettier still depends on deprecated fields w/ `suppressDeprecatedPropertyWarnings`
-    - `TSEnumDeclaration.members`
-    - `TSMappedType.typeParameter`
-  - Current bench failings (other than `reading 'start'`) are because of this
-  - Fixing this in Prettier is desirable, but it is relatively hard until Babel@8 is released and used
+This repo just exists to test this plugin in separate repo.
 
 ## Debug
 
 ```sh
 node debug.js
 
-./node_modules/bin/prettier --plugin=prettier-plugin-oxc debug.js
-./node_modules/bin/prettier --plugin=prettier-plugin-oxc ./benchmark/fixtures/ts/2922-kb.ts
+./node_modules/bin/prettier --plugin=prettier-oxc-parser debug.js
+./node_modules/bin/prettier --plugin=prettier-oxc-parser ./benchmark/fixtures/ts/2922-kb.ts
 ```
 
 ## Coverage
