@@ -1,5 +1,5 @@
 {
-  "name": "prettier-plugin-oxc",
+  "name": "prettier-oxc-parser-tests",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
